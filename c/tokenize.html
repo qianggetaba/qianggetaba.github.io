@@ -1,0 +1,723 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>tokenize · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="getline--windows.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    c
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="getline--windows.html">
+            
+                <a href="getline--windows.html">
+            
+                    
+                    getline--windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="tokenize.html">
+            
+                <a href="tokenize.html">
+            
+                    
+                    tokenize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    centos7
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../centos7/dd-vmdk.html">
+            
+                <a href="../centos7/dd-vmdk.html">
+            
+                    
+                    dd-vmdk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../centos7/gnu-efi.html">
+            
+                <a href="../centos7/gnu-efi.html">
+            
+                    
+                    gnu-efi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../centos7/other.html">
+            
+                <a href="../centos7/other.html">
+            
+                    
+                    other
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../centos7/qemu-efi.html">
+            
+                <a href="../centos7/qemu-efi.html">
+            
+                    
+                    qemu-efi
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    gdb
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../gdb/other.html">
+            
+                <a href="../gdb/other.html">
+            
+                    
+                    other
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    kernel
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../kernel/make.html">
+            
+                <a href="../kernel/make.html">
+            
+                    
+                    make
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../kernel/make-defconfig.html">
+            
+                <a href="../kernel/make-defconfig.html">
+            
+                    
+                    make-defconfig
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../kernel/make-j.html">
+            
+                <a href="../kernel/make-j.html">
+            
+                    
+                    make-j
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../kernel/start.html">
+            
+                <a href="../kernel/start.html">
+            
+                    
+                    start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    other
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/intel-instruction-encoding.html">
+            
+                <a href="../other/intel-instruction-encoding.html">
+            
+                    
+                    intel-instruction-encoding
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    system
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../system/hardware.html">
+            
+                <a href="../system/hardware.html">
+            
+                    
+                    hardware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../system/pci.html">
+            
+                <a href="../system/pci.html">
+            
+                    
+                    pci
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    windows
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../windows/mingw-vmware-debug.html">
+            
+                <a href="../windows/mingw-vmware-debug.html">
+            
+                    
+                    mingw-vmware-debug
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >tokenize</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>simple tokenize example of simple calculate</p>
+<pre><code>#include&lt;stdio.h&gt;
+
+enum tokentype
+{
+    OP, NUM, LP, RP
+};
+typedef struct token {
+    int tokentype;
+    char val[16];
+    struct token* prev;
+    struct token* next;
+} token;
+
+token* newtoken()
+{
+    token* tokennew = malloc(sizeof(token));
+    tokennew-&gt;next = NULL;
+    tokennew-&gt;prev = NULL;
+    tokennew-&gt;val[0] = &apos;\0&apos;;
+    return tokennew;
+}
+
+
+void tokenmoveon(token** tokencurr)
+{
+    (*tokencurr)-&gt;next = newtoken();
+    (*tokencurr)-&gt;next-&gt;next = NULL;
+    (*tokencurr)-&gt;next-&gt;prev = (*tokencurr);
+    (*tokencurr) = (*tokencurr)-&gt;next;
+}
+
+void printtoknetype(int type)
+{
+    switch (type)
+    {
+    case OP:
+        printf(&quot;OP&quot;);
+        break;
+    case NUM:
+        printf(&quot;NUM&quot;);
+        break;
+    case LP:
+        printf(&quot;LP&quot;);
+        break;
+    case RP:
+        printf(&quot;RP&quot;);
+        break;
+    default:
+        break;
+    }
+}
+
+void printtoken(token* thead)
+{
+    token* p;
+    p = thead;
+    printf(&quot;tokne:\n&quot;);
+    while (p != NULL)
+    {
+        printtoknetype(p-&gt;tokentype);
+        printf(&quot;:[%s] &quot;, p-&gt;val);
+        p = p-&gt;next;
+    }
+}
+
+void tokenone(token** tokencurr, int tokentype, char op)
+{
+    (*tokencurr)-&gt;tokentype = tokentype;
+    (*tokencurr)-&gt;val[0] = op;
+    (*tokencurr)-&gt;val[1] = &apos;\0&apos;;
+    tokenmoveon(tokencurr);
+}
+
+token* tokenize(char* str)
+{
+    if (!*str) printf(&quot;no token\n&quot;);
+    token* thead;
+    token* tokencurr = newtoken();
+    thead = tokencurr;
+
+    int i, idx = 0;
+    char word[16];
+    for (i = 0; i &lt; strlen(str); i++) {
+        char next = str[i + 1];
+        switch (str[i])
+        {
+        case &apos; &apos;:
+            continue;
+        case &apos;\0&apos;:
+            break;
+        case &apos;+&apos;:  //after + will be num (after num will be a op) or (
+            tokenone(&amp;tokencurr, OP, &apos;+&apos;);
+            continue;
+        case &apos;-&apos;:
+            tokenone(&amp;tokencurr, OP, &apos;-&apos;);
+            continue;
+        case &apos;x&apos;:
+            tokenone(&amp;tokencurr, OP, &apos;x&apos;);
+            continue;
+        case &apos;/&apos;:
+            tokenone(&amp;tokencurr, OP, &apos;/&apos;);
+            continue;
+        case &apos;(&apos;:
+            tokenone(&amp;tokencurr, LP, &apos;(&apos;);
+            continue;
+        case &apos;)&apos;:
+            tokenone(&amp;tokencurr, RP, &apos;)&apos;);
+            continue;
+        default:
+            word[idx++] = str[i]; // digit num
+            if (!isdigit(next))  // finish num
+            {
+                word[idx] = &apos;\0&apos;;
+                strcpy(tokencurr-&gt;val, word);
+                idx = 0;
+                tokencurr-&gt;tokentype = NUM;
+                tokenmoveon(&amp;tokencurr);
+            }
+            continue;
+        }
+    }
+    //delete last token, is null token, because we tokenmoveon create token node first
+    tokencurr = tokencurr-&gt;prev;
+    free(tokencurr-&gt;next);
+    tokencurr-&gt;next = NULL;
+    return thead;
+
+}
+
+
+void getline(char* input, int inputsize) {
+    int len = inputsize;
+    int idx = 0;
+    input[idx] = &apos;\0&apos;;
+    while (1)
+    {
+        char c = fgetc(stdin);
+        if (c == EOF)
+            break;
+        if (c == &apos;\n&apos;)
+        {
+            input[idx++] = &apos;\0&apos;;
+            break;
+        }
+        else {
+            input[idx++] = c;
+        }
+        if (idx &gt;= len - 1)
+        {
+            input[idx++] = &apos;\0&apos;;
+            break;
+        }
+    }
+}
+
+int main()
+{
+    char input[128];
+    getline(input, 128);
+    printf(&quot;input: %s\n&quot;, input);
+
+    token* tokenlist = tokenize(input);
+    printtoken(tokenlist);
+
+
+    return 0;
+}
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="getline--windows.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: getline--windows">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"tokenize","level":"1.2.2","depth":2,"next":{"title":"centos7","level":"1.3","depth":1,"ref":"","articles":[{"title":"dd-vmdk","level":"1.3.1","depth":2,"path":"centos7/dd-vmdk.md","ref":"centos7/dd-vmdk.md","articles":[]},{"title":"gnu-efi","level":"1.3.2","depth":2,"path":"centos7/gnu-efi.md","ref":"centos7/gnu-efi.md","articles":[]},{"title":"other","level":"1.3.3","depth":2,"path":"centos7/other.md","ref":"centos7/other.md","articles":[]},{"title":"qemu-efi","level":"1.3.4","depth":2,"path":"centos7/qemu-efi.md","ref":"centos7/qemu-efi.md","articles":[]}]},"previous":{"title":"getline--windows","level":"1.2.1","depth":2,"path":"c/getline--windows.md","ref":"c/getline--windows.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/tokenize.md","mtime":"2019-01-08T02:12:40.766Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-01T15:12:53.154Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
