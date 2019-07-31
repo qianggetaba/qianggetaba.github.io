@@ -28,4 +28,12 @@ git init
 
 ```
 
+```
+hexo clean
+hexo g & hexo s
+
+```
+
+upload public to gitpage
+
 
