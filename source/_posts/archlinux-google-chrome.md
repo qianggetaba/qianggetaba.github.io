@@ -1,7 +1,12 @@
 ---
-title: archlinux/google-chrome
+title: archlinux安装chrome谷歌浏览器
 date: 2019-08-05 11:06:45
 tags:
+ - chrome
+ - 谷歌
+ - 图标
+categories:
+ - ArchLinux
 ---
 
 安装好用又好看的google chrome谷歌浏览器，需要在已经安装了桌面环境，这常识应该都知道吧

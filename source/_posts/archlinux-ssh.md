@@ -1,7 +1,11 @@
 ---
-title: archlinux/ssh
+title: archlinux开启ssh远程连接服务
 date: 2019-08-05 11:03:46
 tags:
+ - ssh
+ - sshd
+categories:
+ - ArchLinux
 ---
 
 在启动到archiso的live安装环境，也可以打开ssh，远程连接后进行安装，方便
