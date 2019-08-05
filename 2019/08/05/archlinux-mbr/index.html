@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>qianggetaba-blog</title>
+  <title>mbr方式，简单快速安装archlinux | qianggetaba-blog</title>
   <meta name="keywords" content>
-  <meta name="description" content="qianggetaba-blog">
+  <meta name="description" content="mbr方式，简单快速安装archlinux | qianggetaba-blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="很多时候觉得linux难用，一是没有好用的中文输入法，二是没有熟悉的办公软件（office全家桶），三是没有qq微信（腾讯以前有过，用的人少就停了，现在wine的不好用，只能在xp虚拟机（内存占用少）使用），四是没有好玩的大型网络游戏 123456789101112131415161718192021222324252627282930313233#sogoupinyin# 确保package的m">
 <meta name="keywords" content="情感，编程，码农">
@@ -53,7 +53,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -210,12 +210,43 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-archlinux-mbr" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客平台"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">mbr方式，简单快速安装archlinux</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-08-05 10:59:12'>2019-08-05 10:20</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -228,34 +259,47 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a href="https://hexo.io/">Hexo</a> 生成，部署在 <a href="https://pages.github.com/">GitHub Pages</a>，主题 <a href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-</ul>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mbr方式，就是比较传统古老的启动方式，一块硬盘只能有4个主分区，或者3个主分区，一个扩展分区，扩展分区内，才能建立多个小分区。这个由于mbr的协议的限制的。<br><a href="https://en.wikipedia.org/wiki/Master_boot_record" target="_blank" rel="noopener">Master boot record–mbr</a></p>
+<p>下面的shell安装命令，不是很复杂，第一次尝鲜archlinux还是用有线网络，或者虚拟机的nat网络，因为安装过程需要联网下载系统包。</p>
+<p>下面的安装是在一块硬盘上安装，熟悉过程后，可以自己适当修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"># 用iso或者 rufus把iso写入的启动upan，进入live环境</span><br><span class="line"></span><br><span class="line"># test internet</span><br><span class="line">ping www.baidu.com</span><br><span class="line"></span><br><span class="line"># delete all partition in /dev/sda</span><br><span class="line">wipefs -a /dev/sda</span><br><span class="line"></span><br><span class="line"># partition, use whole disk</span><br><span class="line">fdisk /dev/sda</span><br><span class="line">n</span><br><span class="line">p</span><br><span class="line">enter</span><br><span class="line">enter</span><br><span class="line">enter</span><br><span class="line">w</span><br><span class="line"></span><br><span class="line"># format partition and mount</span><br><span class="line">mkfs.ext4 /dev/sda1</span><br><span class="line">mount /dev/sda1 /mnt</span><br><span class="line"></span><br><span class="line"># add china local mirror url to line 6 of mirrorlist</span><br><span class="line">sed -i &apos;6iServer = http://mirrors.163.com/archlinux/$repo/os/$arch&apos; /etc/pacman.d/mirrorlist</span><br><span class="line"></span><br><span class="line"># download package db, so pacman can know package and its dependency</span><br><span class="line">pacman -Sy</span><br><span class="line"></span><br><span class="line"># install base package to disk, like kernel, glibc, coreutils .etc</span><br><span class="line">pacstrap -i /mnt base base-devel</span><br><span class="line"></span><br><span class="line"># partition table to fstab, when system boot can auto mount partition </span><br><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"></span><br><span class="line"># go into disk system enviroment</span><br><span class="line">arch-chroot /mnt</span><br><span class="line"></span><br><span class="line"># timezone</span><br><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"></span><br><span class="line"># system support lang</span><br><span class="line">sed -i -e &apos;s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/&apos; /etc/locale.gen</span><br><span class="line">sed -i -e &apos;s/#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/&apos; /etc/locale.gen</span><br><span class="line">locale-gen</span><br><span class="line"></span><br><span class="line"># misc 杂项配置</span><br><span class="line">echo &quot;LANG=en_US.UTF-8&quot; &gt;&gt; /etc/locale.conf</span><br><span class="line">echo &quot;myarch&quot; &gt;&gt; /etc/hostname</span><br><span class="line">echo &quot;127.0.0.1  localhost&quot; &gt;&gt; /etc/hosts</span><br><span class="line">echo &quot;::1 localhost&quot; &gt;&gt; /etc/hosts</span><br><span class="line">echo &quot;127.0.1.1	 myarch.localdomain	 myarch&quot; &gt;&gt; /etc/hosts</span><br><span class="line"></span><br><span class="line"># initramfs</span><br><span class="line">mkinitcpio -p linux</span><br><span class="line"></span><br><span class="line"># root password</span><br><span class="line">echo &quot;root:ergdgfd!#&quot; | chpasswd</span><br><span class="line"></span><br><span class="line"># install grub bootloader, i386-pc is also for x86_64 arch</span><br><span class="line">pacman -S grub</span><br><span class="line">grub-install --target=i386-pc /dev/sda</span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br><span class="line"></span><br><span class="line"># quit to live system</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"># after reboot, log in and playaround</span><br></pre></td></tr></table></figure>
 
-        </article>
-        
-        <p>
-            <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+<p>Enjoy!</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 hui740024906@163.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>mbr方式，简单快速安装archlinux</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="qianggetaba">qianggetaba</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-08-05, 10:20:52</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-05, 10:59:12</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/05/archlinux-mbr/" title="mbr方式，简单快速安装archlinux">https://qianggetaba.com/2019/08/05/archlinux-mbr/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">©2016-2019 qianggetaba</p>
