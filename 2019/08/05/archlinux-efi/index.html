@@ -3,21 +3,21 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   <title>efi方式，安装archlinux，需要主板支持，目前新的主板都可以 | qianggetaba-blog</title>
-  <meta name="keywords" content>
+  <meta name="keywords" content=" efi , 安装 , efi启动 ">
   <meta name="description" content="efi方式，安装archlinux，需要主板支持，目前新的主板都可以 | qianggetaba-blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="很多时候觉得linux难用，一是没有好用的中文输入法，二是没有熟悉的办公软件（office全家桶），三是没有qq微信（腾讯以前有过，用的人少就停了，现在wine的不好用，只能在xp虚拟机（内存占用少）使用），四是没有好玩的大型网络游戏 123456789101112131415161718192021222324252627282930313233#sogoupinyin# 确保package的m">
-<meta name="keywords" content="情感，编程，码农">
+<meta name="description" content="在简单的从iso或者usb安装完成arch后，只有终端命令行，这样是简单方便，也可以安装桌面环境，不再是黑黑的命令 以下是安装gnome桌面环境，等熟悉了，自己可以安装其他桌面环境尝鲜，gnome是主流桌面环境， gnome是Ubuntu默认的桌面环境，想来应该还是不错的， 1234567891011121314pacman -Sy# wqy-microhei是chrome中文乱码pacman -">
+<meta name="keywords" content="桌面环境,gnome,gdm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="arch安装sogou搜狗输入法">
-<meta property="og:url" content="https://qianggetaba.com/2019/08/05/archlinux-sogou/index.html">
+<meta property="og:title" content="archlinux安装桌面环境系统，好好玩耍">
+<meta property="og:url" content="https://qianggetaba.com/2019/08/05/archlinux-desktop/index.html">
 <meta property="og:site_name" content="qianggetaba-blog">
-<meta property="og:description" content="很多时候觉得linux难用，一是没有好用的中文输入法，二是没有熟悉的办公软件（office全家桶），三是没有qq微信（腾讯以前有过，用的人少就停了，现在wine的不好用，只能在xp虚拟机（内存占用少）使用），四是没有好玩的大型网络游戏 123456789101112131415161718192021222324252627282930313233#sogoupinyin# 确保package的m">
+<meta property="og:description" content="在简单的从iso或者usb安装完成arch后，只有终端命令行，这样是简单方便，也可以安装桌面环境，不再是黑黑的命令 以下是安装gnome桌面环境，等熟悉了，自己可以安装其他桌面环境尝鲜，gnome是主流桌面环境， gnome是Ubuntu默认的桌面环境，想来应该还是不错的， 1234567891011121314pacman -Sy# wqy-microhei是chrome中文乱码pacman -">
 <meta property="og:locale" content="any">
-<meta property="og:updated_time" content="2019-08-05T03:18:06.937Z">
+<meta property="og:updated_time" content="2019-08-05T03:48:12.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="arch安装sogou搜狗输入法">
-<meta name="twitter:description" content="很多时候觉得linux难用，一是没有好用的中文输入法，二是没有熟悉的办公软件（office全家桶），三是没有qq微信（腾讯以前有过，用的人少就停了，现在wine的不好用，只能在xp虚拟机（内存占用少）使用），四是没有好玩的大型网络游戏 123456789101112131415161718192021222324252627282930313233#sogoupinyin# 确保package的m">
+<meta name="twitter:title" content="archlinux安装桌面环境系统，好好玩耍">
+<meta name="twitter:description" content="在简单的从iso或者usb安装完成arch后，只有终端命令行，这样是简单方便，也可以安装桌面环境，不再是黑黑的命令 以下是安装gnome桌面环境，等熟悉了，自己可以安装其他桌面环境尝鲜，gnome是主流桌面环境， gnome是Ubuntu默认的桌面环境，想来应该还是不错的， 1234567891011121314pacman -Sy# wqy-microhei是chrome中文乱码pacman -">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,11 +80,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(7)</small></div></li>
+    <li><div class="all active">全部文章<small>(8)</small></div></li>
     
         
             
-            <li><div data-rel="ArchLinux">ArchLinux<small>(1)</small></div>
+            <li><div data-rel="ArchLinux">ArchLinux<small>(7)</small></div>
                 
             </li>
             
@@ -98,9 +98,9 @@
     
     
     </div>
-    <div><a style="border-right: 1px solid #fff; width: 49%"  class="about site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+    <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_posts_number" value="8">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -138,6 +138,66 @@
         <a href="javascript:" class="color5">ArchLinux</a>
     </li>
     
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">桌面环境</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">gnome</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">gdm</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">efi</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">安装</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">efi启动</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">chrome</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">谷歌</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">图标</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">mbr</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">sogou</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">搜狗</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">输入法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">ssh</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">sshd</a>
+    </li>
+    
     <div class="clearfix"></div>
 </div>
 
@@ -152,52 +212,60 @@
             <span class="post-date" title="2019-08-05 09:59:02">2019/08/05</span>
         </a>
         
-        <a  class=""
+        <a  class="ArchLinux "
+           href="/2019/08/05/archlinux-desktop/"
+           data-tag="桌面环境,gnome,gdm"
+           data-author="" >
+            <span class="post-title" title="archlinux安装桌面环境系统，好好玩耍">archlinux安装桌面环境系统，好好玩耍</span>
+            <span class="post-date" title="2019-08-05 11:33:53">2019/08/05</span>
+        </a>
+        
+        <a  class="ArchLinux "
            href="/2019/08/05/archlinux-efi/"
-           data-tag=""
+           data-tag="efi,安装,efi启动"
            data-author="" >
             <span class="post-title" title="efi方式，安装archlinux，需要主板支持，目前新的主板都可以">efi方式，安装archlinux，需要主板支持，目前新的主板都可以</span>
             <span class="post-date" title="2019-08-05 10:42:47">2019/08/05</span>
         </a>
         
-        <a  class=""
+        <a  class="ArchLinux "
            href="/2019/08/05/archlinux-google-chrome/"
-           data-tag=""
+           data-tag="chrome,谷歌,图标"
            data-author="" >
-            <span class="post-title" title="archlinux/google-chrome">archlinux/google-chrome</span>
+            <span class="post-title" title="archlinux安装chrome谷歌浏览器">archlinux安装chrome谷歌浏览器</span>
             <span class="post-date" title="2019-08-05 11:06:45">2019/08/05</span>
         </a>
         
-        <a  class=""
+        <a  class="ArchLinux "
            href="/2019/08/05/archlinux-mbr/"
-           data-tag=""
+           data-tag="安装,mbr"
            data-author="" >
             <span class="post-title" title="mbr方式，简单快速安装archlinux">mbr方式，简单快速安装archlinux</span>
             <span class="post-date" title="2019-08-05 10:20:52">2019/08/05</span>
         </a>
         
-        <a  class=""
+        <a  class="ArchLinux "
            href="/2019/08/05/archlinux-sogou/"
-           data-tag=""
+           data-tag="sogou,搜狗,输入法"
            data-author="" >
             <span class="post-title" title="arch安装sogou搜狗输入法">arch安装sogou搜狗输入法</span>
             <span class="post-date" title="2019-08-05 11:12:59">2019/08/05</span>
         </a>
         
-        <a  class=""
+        <a  class="ArchLinux "
            href="/2019/08/05/archlinux-ssh/"
-           data-tag=""
+           data-tag="ssh,sshd"
            data-author="" >
-            <span class="post-title" title="archlinux/ssh">archlinux/ssh</span>
+            <span class="post-title" title="archlinux开启ssh远程连接服务">archlinux开启ssh远程连接服务</span>
             <span class="post-date" title="2019-08-05 11:03:46">2019/08/05</span>
         </a>
         
         <a  class=""
-           href="/2019/07/31/hello-world/"
+           href="/2019/08/05/hello-world/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="Hello World">Hello World</span>
-            <span class="post-date" title="2019-07-31 15:15:10">2019/07/31</span>
+            <span class="post-date" title="2019-08-05 11:28:39">2019/08/05</span>
         </a>
         
     </nav>
@@ -220,11 +288,27 @@
         
         
         
+        <span class="book">
+            
+                <a href="javascript:" data-rel="ArchLinux">ArchLinux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">efi</a>
+            
+            <a href="javascript:" class="color3">安装</a>
+            
+            <a href="javascript:" class="color1">efi启动</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-05 11:01:08'>2019-08-05 10:42</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-05 11:47:21'>2019-08-05 10:42</time>
         
     </div>
     <div class="article-meta">
@@ -263,7 +347,7 @@
       
         <p>efi是新一代的bios标准与磁盘标准，是未来的趋势，硬盘使用gpt管理分区，避免mbr的分区数量，分区大小限制</p>
 <p>efi启动方式简介，开机按钮，bios后，bios会在gpt分区的硬盘上找esp（EFI system partition）分区，分区格式fat32，格式简单方便处理。bios启动esp分区下的\efi\boot\bootx64.efi文件，开始系统引导。比mbr的磁盘分区字节搜索方式更高级，智能。</p>
-<p>efi最少需要两个分区，一个esp启动分区，一个系统分区，【需要主板支持】，新的主板的【csm模式】就是为了兼容老的mbr legacy启动方式<br>有些命令可以看<a href="archlinux-mbr.md">mbr方式，简单快速安装archlinux</a></p>
+<p>efi最少需要两个分区，一个esp启动分区，一个系统分区，【需要主板支持】，新的主板的【csm模式】就是为了兼容老的mbr legacy启动方式<br>有些命令可以看<a href="https://qianggetaba.com/2019/08/05/archlinux-mbr/">mbr方式，简单快速安装archlinux</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"># 启动进入live 环境</span><br><span class="line"></span><br><span class="line">ping www.baidu.com</span><br><span class="line"></span><br><span class="line">wipefs -a /dev/sda</span><br><span class="line"></span><br><span class="line"># partition, 256M for esp partition, g make disk to gpt</span><br><span class="line">fdisk /dev/sda</span><br><span class="line">g</span><br><span class="line">n</span><br><span class="line">enter</span><br><span class="line">enter</span><br><span class="line">+256M</span><br><span class="line">n</span><br><span class="line">enter</span><br><span class="line">enter</span><br><span class="line">+100G</span><br><span class="line">w</span><br><span class="line"></span><br><span class="line"># sda1 is esp</span><br><span class="line">mkfs.fat -F32 /dev/sda1  ;format esp</span><br><span class="line">mkfs.ext4 /dev/sda2</span><br><span class="line"></span><br><span class="line"># mount order</span><br><span class="line">mount /dev/sda2 /mnt </span><br><span class="line">mkdir -p /mnt/boot/EFI</span><br><span class="line">mount /dev/sda1 /mnt/boot/EFI</span><br><span class="line"></span><br><span class="line">sed -i &apos;6iServer = http://mirrors.163.com/archlinux/$repo/os/$arch&apos; /etc/pacman.d/mirrorlist </span><br><span class="line"></span><br><span class="line">pacman -Sy</span><br><span class="line">pacstrap -i /mnt base base-devel</span><br><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"></span><br><span class="line">arch-chroot /mnt</span><br><span class="line"></span><br><span class="line"># timezone</span><br><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"></span><br><span class="line"># system support lang</span><br><span class="line">sed -i -e &apos;s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/&apos; /etc/locale.gen</span><br><span class="line">sed -i -e &apos;s/#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/&apos; /etc/locale.gen</span><br><span class="line">locale-gen</span><br><span class="line"></span><br><span class="line"># misc 杂项配置</span><br><span class="line">echo &quot;LANG=en_US.UTF-8&quot; &gt;&gt; /etc/locale.conf</span><br><span class="line">echo &quot;myarch&quot; &gt;&gt; /etc/hostname</span><br><span class="line">echo &quot;127.0.0.1  localhost&quot; &gt;&gt; /etc/hosts</span><br><span class="line">echo &quot;::1 localhost&quot; &gt;&gt; /etc/hosts</span><br><span class="line">echo &quot;127.0.1.1	 myarch.localdomain	 myarch&quot; &gt;&gt; /etc/hosts</span><br><span class="line"></span><br><span class="line"># initramfs</span><br><span class="line">mkinitcpio -p linux</span><br><span class="line"></span><br><span class="line"># root password</span><br><span class="line">echo &quot;root:ergdgfd!#&quot; | chpasswd</span><br><span class="line"></span><br><span class="line"># os-prober for windows dual boot search</span><br><span class="line">pacman -S grub efibootmgr dosfstools os-prober mtools</span><br><span class="line">grub-install --target=x86_64-efi  --bootloader-id=ArchLinux --efi-directory=/boot/EFI --recheck</span><br><span class="line">os-prober</span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br><span class="line"></span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
 <p>Done!</p>
@@ -284,7 +368,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="qianggetaba">qianggetaba</a></p>
     <p><span class="copy-title">发布时间:</span>2019-08-05, 10:42:47</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-05, 11:01:08</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-05, 11:47:21</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/05/archlinux-efi/" title="efi方式，安装archlinux，需要主板支持，目前新的主板都可以">https://qianggetaba.com/2019/08/05/archlinux-efi/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -346,7 +430,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#ArchLinux',],
+            'data': ['#ArchLinux','#桌面环境','#gnome','#gdm','#efi','#安装','#efi启动','#chrome','#谷歌','#图标','#mbr','#sogou','#搜狗','#输入法','#ssh','#sshd',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
