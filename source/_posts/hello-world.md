@@ -32,6 +32,10 @@ git init
 hexo clean
 hexo g & hexo s
 
+
+# 使用dev分支保存git pages 源码，master为生成的git pages的静态html文件
+hexo clean && hexo g && git checkout master && cp -r public/* . && git add . && git commit -m "update" && git push && git checkout dev
+
 ```
 
 upload public to gitpage
