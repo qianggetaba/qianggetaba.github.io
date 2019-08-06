@@ -8,7 +8,7 @@ categories:
  - ArchLinux
 ---
 
-Arch User Repository (Aur),就是用户创建上传的包，里面是构建包的一个脚本文件```PKGBUILD```，当这个包比较受欢迎，就会进入community库的里面
+Arch User Repository (Aur),就是用户创建上传的包，里面是构建包的一个脚本文件``PKGBUILD``，当这个包比较受欢迎，就会进入community库的里面
 
 下面是怎么安装aur的包，比如 [https://aur.archlinux.org/packages/jdk8/](https://aur.archlinux.org/packages/jdk8/)
 
