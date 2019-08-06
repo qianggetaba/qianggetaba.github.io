@@ -1551,6 +1551,7 @@ div.ac > ul > li:before,
 .post .pjax article :not(pre) > code {
   color: #bf1827;
   font-family: sans-serif;
+  background-color: #7fff00;
 }
 .post .pjax article pre > code {
   font-size: 15px;
