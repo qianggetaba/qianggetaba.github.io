@@ -22,6 +22,7 @@ arch系统中的一些常规记录，常用路径，常用命令等等
 图标显示不正常或者没有可以看看 ``/usr/share/applications/``
 
 - 上面图标文件.desktop中的Icon默认路径,一般是48x48的png ``/usr/share/pixmaps/``
+- chrome的apps在 ``~/.local/share/applications/chrome-fhbjgbiflinjbdggehcddcbncdddomop-Default.desktop``
 
 
 - pacman下载的镜像地址设置 ``/etc/pacman.d/mirrorlist``
@@ -163,4 +164,12 @@ ${color white}DISKIO ${hr 1}${color}
 Read ${diskio_read}/s ${alignr}Write ${diskio_write}/s
 ${diskiograph_read /dev/sda 25,107} ${alignr}${diskiograph_read /dev/sda 25,107}
 ]]
+```
+
+把常用的命令放入 ``/usr/local/bin/``,方便输入时，提示
+```
+cat <<EOT | sudo tee /usr/local/bin/navicat | sudo chmod +x /usr/local/bin/navicat
+#!/bin/bash
+～/navicat121_premium_en_x64/start_navicat
+EOT
 ```
