@@ -8,7 +8,7 @@ categories:
  - xorg
 ---
 
-只启动xorg-server,显示我们自己写的程序(xorg-server的c语言入门)的窗口
+只启动xorg-server,显示我们自己写的程序[xorg-server的c语言入门](https://qianggetaba.com/2019/08/09/xorg-server-newbie/)的窗口
 
 [man xinit](https://www.x.org/archive/X11R6.7.0/doc/xinit.1.html)
 
