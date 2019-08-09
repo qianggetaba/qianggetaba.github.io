@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>archlinux安装桌面环境系统，好好玩耍 | qianggetaba-blog</title>
-  <meta name="keywords" content=" 桌面环境 , gnome , gdm ">
-  <meta name="description" content="archlinux安装桌面环境系统，好好玩耍 | qianggetaba-blog">
+  <title>只启动x-server深入linux图形架构 后启动我们自己的小窗口 | qianggetaba-blog</title>
+  <meta name="keywords" content=" xorg , xorg-server ">
+  <meta name="description" content="只启动x-server深入linux图形架构 后启动我们自己的小窗口 | qianggetaba-blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在终端显示系统信息的 screenfetch neofetch">
 <meta name="keywords" content="screenfetch,neofetch">
@@ -410,9 +410,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-archlinux-desktop" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-xorg-only" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">archlinux安装桌面环境系统，好好玩耍</h1>
+        <h1 class="article-title">只启动x-server深入linux图形架构 后启动我们自己的小窗口</h1>
     
     <div class="article-meta">
         
@@ -420,30 +420,28 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="ArchLinux">ArchLinux</a>
+                <a href="javascript:" data-rel="xorg">xorg</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">桌面环境</a>
+            <a href="javascript:" class="color5">xorg</a>
             
-            <a href="javascript:" class="color1">gnome</a>
-            
-            <a href="javascript:" class="color4">gdm</a>
+            <a href="javascript:" class="color2">xorg-server</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-08 15:52:05'>2019-08-05 11:33</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-09 15:09:10'>2019-08-09 14:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:278</span>
+        <span>字数:323</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -477,15 +475,19 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在简单的从iso或者usb安装完成arch后，只有终端命令行，这样是简单方便，也可以安装桌面环境，不再是黑黑的命令</p>
-<p>以下是安装gnome桌面环境，等熟悉了，自己可以安装其他桌面环境尝鲜，gnome是主流桌面环境， gnome是Ubuntu默认的桌面环境，想来应该还是不错的，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pacman -Sy</span><br><span class="line"># wqy-microhei是chrome中文乱码</span><br><span class="line">pacman -S xorg xorg-server gnome ttf-droid wqy-microhei</span><br><span class="line"></span><br><span class="line"># 安装的包很多，需要耐心慢慢装</span><br><span class="line"></span><br><span class="line"># 添加非root用户，root也可以登录桌面，但是一般推荐不是root用户登录桌面</span><br><span class="line">useradd -m -g users -s /bin/bash qianggetaba</span><br><span class="line">passwd qianggetaba</span><br><span class="line">vi /etc/sudoers #root ALL=(ALL) ALL 下面加 qianggetaba ALL=(ALL) ALL  添加sudo执行命令权限</span><br><span class="line"></span><br><span class="line">systemctl enable sshd</span><br><span class="line">systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+        <p>只启动xorg-server,显示我们自己写的程序(xorg-server的c语言入门)的窗口</p>
+<p><a href="https://www.x.org/archive/X11R6.7.0/doc/xinit.1.html" target="_blank" rel="noopener">man xinit</a></p>
+<p><code>startx</code> 是 <code>xinit</code> 的包装，xinit默认会启动xterm，一个窗口化的终端，方便那些不能直接在kernel启动init的时候，启动桌面，就先启动xterm，再启动桌面</p>
+<p>安装xterm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S xterm</span><br><span class="line">xterm  #确保能启动</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://wiki.archlinux.org/index.php/Xorg#Driver_installation" target="_blank" rel="noopener">Driver installation</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 显卡驱动选择</span><br><span class="line">lspci | grep -e VGA -e 3D       #查看显卡</span><br><span class="line">pacman -S xf86-video-intel      #intel video driver</span><br><span class="line">pacman -S xf86-video-amdgpu     #amd video driver</span><br><span class="line">pacman -S xf86-video-nouveau	# nvidia</span><br></pre></td></tr></table></figure>
+<p>回到系统启动后的黑屏终端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xinit  #会报错，可能缺少一些环境变量</span><br><span class="line">startx  会启动几个xterm与鼠标，图像窗口程序</span><br><span class="line"></span><br><span class="line">./xorg  # 在其中一个xterm，运行我们编译的xlib写的简单窗口</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line"></span><br><span class="line"># 重启后还是进入命令行，是为了保险起见，因为不知道桌面环境是否能正常启动，执行下面命令，启动桌面</span><br><span class="line">systemctl start gdm</span><br></pre></td></tr></table></figure>
-
+<p>可以看到程序启动，左上角有个小窗口，黑色背景，上面有条白色线</p>
+<p>startx 会设置一些环境变量，启动xinit，启动xorg-server，启动xterm<br>我们就可以在xterm上启动我们的xlib程序了，但是由于没有窗口管理器，窗口不能移动，最大最小化</p>
+<p>由此，可以看出，linux的图像架构，一般是启动xserver，xserver找到一个图像程序<br>一般是窗口管理器，然后这个程序启动桌面环境，就是我们看到的桌面了</p>
+<p>如果xserver找不到一个图形程序，或者运行的那个图形程序退出了，xserver也会退出</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 hui740024906@163.com </span>
@@ -499,12 +501,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>archlinux安装桌面环境系统，好好玩耍</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">278</span></p>
+    <p><span class="copy-title">文章标题:</span>只启动x-server深入linux图形架构 后启动我们自己的小窗口</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">323</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="qianggetaba">qianggetaba</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-05, 11:33:53</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-08, 15:52:05</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/05/archlinux-desktop/" title="archlinux安装桌面环境系统，好好玩耍">https://qianggetaba.com/2019/08/05/archlinux-desktop/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-09, 14:54:27</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-09, 15:09:10</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/09/xorg-only/" title="只启动x-server深入linux图形架构 后启动我们自己的小窗口">https://qianggetaba.com/2019/08/09/xorg-only/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

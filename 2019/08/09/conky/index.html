@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>archlinux安装桌面环境系统，好好玩耍 | qianggetaba-blog</title>
-  <meta name="keywords" content=" 桌面环境 , gnome , gdm ">
-  <meta name="description" content="archlinux安装桌面环境系统，好好玩耍 | qianggetaba-blog">
+  <title>conky华丽桌面显示系统仪表盘 | qianggetaba-blog</title>
+  <meta name="keywords" content=" conky , 软件 ">
+  <meta name="description" content="conky华丽桌面显示系统仪表盘 | qianggetaba-blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在终端显示系统信息的 screenfetch neofetch">
 <meta name="keywords" content="screenfetch,neofetch">
@@ -410,9 +410,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-archlinux-desktop" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-conky" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">archlinux安装桌面环境系统，好好玩耍</h1>
+        <h1 class="article-title">conky华丽桌面显示系统仪表盘</h1>
     
     <div class="article-meta">
         
@@ -420,30 +420,28 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="ArchLinux">ArchLinux</a>
+                <a href="javascript:" data-rel="软件">软件</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">桌面环境</a>
+            <a href="javascript:" class="color1">conky</a>
             
-            <a href="javascript:" class="color1">gnome</a>
-            
-            <a href="javascript:" class="color4">gdm</a>
+            <a href="javascript:" class="color3">软件</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-08 15:52:05'>2019-08-05 11:33</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-09 12:00:39'>2019-08-09 11:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:278</span>
+        <span>字数:496</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -477,16 +475,13 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在简单的从iso或者usb安装完成arch后，只有终端命令行，这样是简单方便，也可以安装桌面环境，不再是黑黑的命令</p>
-<p>以下是安装gnome桌面环境，等熟悉了，自己可以安装其他桌面环境尝鲜，gnome是主流桌面环境， gnome是Ubuntu默认的桌面环境，想来应该还是不错的，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pacman -Sy</span><br><span class="line"># wqy-microhei是chrome中文乱码</span><br><span class="line">pacman -S xorg xorg-server gnome ttf-droid wqy-microhei</span><br><span class="line"></span><br><span class="line"># 安装的包很多，需要耐心慢慢装</span><br><span class="line"></span><br><span class="line"># 添加非root用户，root也可以登录桌面，但是一般推荐不是root用户登录桌面</span><br><span class="line">useradd -m -g users -s /bin/bash qianggetaba</span><br><span class="line">passwd qianggetaba</span><br><span class="line">vi /etc/sudoers #root ALL=(ALL) ALL 下面加 qianggetaba ALL=(ALL) ALL  添加sudo执行命令权限</span><br><span class="line"></span><br><span class="line">systemctl enable sshd</span><br><span class="line">systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+        <p>conky是在桌面可以显示系统信息的仪表盘，cpu，内存网络，磁盘等等，配置好了，很好看</p>
+<p><img src="conky.png" alt="conky"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S conky conky-manager</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://wiki.archlinux.org/index.php/Xorg#Driver_installation" target="_blank" rel="noopener">Driver installation</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 显卡驱动选择</span><br><span class="line">lspci | grep -e VGA -e 3D       #查看显卡</span><br><span class="line">pacman -S xf86-video-intel      #intel video driver</span><br><span class="line">pacman -S xf86-video-amdgpu     #amd video driver</span><br><span class="line">pacman -S xf86-video-nouveau	# nvidia</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line"></span><br><span class="line"># 重启后还是进入命令行，是为了保险起见，因为不知道桌面环境是否能正常启动，执行下面命令，启动桌面</span><br><span class="line">systemctl start gdm</span><br></pre></td></tr></table></figure>
-
-
+<p>after conky 1.10, use lua syntax</p>
+<p>我的配置，<code>～/.config/conky/conky.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">conky.config = &#123;</span><br><span class="line">    alignment = &apos;top_right&apos;,</span><br><span class="line">    </span><br><span class="line">    background = false,</span><br><span class="line">    </span><br><span class="line">    border_width = 1,</span><br><span class="line">    </span><br><span class="line">    cpu_avg_samples = 2,</span><br><span class="line">    net_avg_samples = 2,</span><br><span class="line">    </span><br><span class="line">    use_xft = true,</span><br><span class="line">    -- Xft font when Xft is enabled</span><br><span class="line">    font = &apos;Sans:size=9&apos;,</span><br><span class="line">    -- Text alpha when using Xft</span><br><span class="line">    xftalpha = 0.8,</span><br><span class="line">	</span><br><span class="line">    default_color = &apos;white&apos;,</span><br><span class="line">    default_outline_color = &apos;white&apos;,</span><br><span class="line">    default_shade_color = &apos;white&apos;,</span><br><span class="line">    </span><br><span class="line">    draw_borders = false,</span><br><span class="line">    draw_graph_borders = true,</span><br><span class="line">    draw_outline = false,</span><br><span class="line">    draw_shades = false,</span><br><span class="line"></span><br><span class="line">    gap_x = 5,</span><br><span class="line">    gap_y = 31,</span><br><span class="line">    minimum_height = 5,</span><br><span class="line">    minimum_width = 5,</span><br><span class="line">	</span><br><span class="line">    no_buffers = true,</span><br><span class="line">    out_to_console = false,</span><br><span class="line">    out_to_stderr = false,</span><br><span class="line">    extra_newline = false,</span><br><span class="line"></span><br><span class="line">    double_buffer = true,</span><br><span class="line">    -- Create own window instead of using desktop (required in nautilus)</span><br><span class="line">    own_window = true,</span><br><span class="line">    own_window_class = &apos;Conky&apos;,</span><br><span class="line">    own_window_argb_visual = true,</span><br><span class="line">    own_window_transparent = true,</span><br><span class="line">    own_window_hints = &apos;undecorated,below,sticky,skip_taskbar,skip_pager&apos;,</span><br><span class="line">    own_window_type = &apos;desktop&apos;,</span><br><span class="line"></span><br><span class="line">    stippled_borders = 0,</span><br><span class="line">    update_interval = 1.0,</span><br><span class="line">    uppercase = false,</span><br><span class="line">    use_spacer = &apos;none&apos;,</span><br><span class="line">    show_graph_scale = false,</span><br><span class="line">    show_graph_range = false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">conky.text = [[</span><br><span class="line">$&#123;alignc&#125;$&#123;color4&#125;$&#123;time %a&#125; $&#123;time %b&#125; $&#123;time %e&#125;     $&#123;alignc&#125;$&#123;color1&#125;$&#123;time %H&#125;:$&#123;color2&#125;$&#123;time %M&#125;:$&#123;color3&#125;$&#123;time %S&#125;</span><br><span class="line">$&#123;color white&#125;SYSTEM $&#123;hr 1&#125;$&#123;color&#125;</span><br><span class="line">Hostname: $alignr$nodename</span><br><span class="line">Kernel: $alignr$kernel</span><br><span class="line">Uptime: $alignr$uptime</span><br><span class="line"></span><br><span class="line">CPU: $&#123;alignr&#125;$&#123;freq dyn&#125; MHz</span><br><span class="line">Processes: $&#123;alignr&#125;$processes ($running_processes running)</span><br><span class="line">Load: $&#123;alignr&#125;$loadavg</span><br><span class="line"></span><br><span class="line">CPU $&#123;alignr&#125;$&#123;cpu cpu0&#125;%</span><br><span class="line">$&#123;cpubar 4 cpu0&#125;</span><br><span class="line">Ram $&#123;alignr&#125;$mem / $memmax ($memperc%)</span><br><span class="line">$&#123;membar 4&#125;</span><br><span class="line">swap $&#123;alignr&#125;$swap / $swapmax ($swapperc%)</span><br><span class="line">$&#123;swapbar 4&#125;</span><br><span class="line"></span><br><span class="line">Highest CPU $alignr CPU%  MEM%</span><br><span class="line">$&#123;top name 1&#125;$alignr$&#123;top cpu 1&#125;   $&#123;top mem 1&#125;</span><br><span class="line">$&#123;top name 2&#125;$alignr$&#123;top cpu 2&#125;   $&#123;top mem 2&#125;</span><br><span class="line">$&#123;top name 3&#125;$alignr$&#123;top cpu 3&#125;   $&#123;top mem 3&#125;</span><br><span class="line"></span><br><span class="line">Highest MEM $alignr CPU%  MEM%</span><br><span class="line">$&#123;top_mem name 1&#125;$alignr$&#123;top_mem cpu 1&#125;   $&#123;top_mem mem 1&#125;</span><br><span class="line">$&#123;top_mem name 2&#125;$alignr$&#123;top_mem cpu 2&#125;   $&#123;top_mem mem 2&#125;</span><br><span class="line">$&#123;top_mem name 3&#125;$alignr$&#123;top_mem cpu 3&#125;   $&#123;top_mem mem 3&#125;</span><br><span class="line"></span><br><span class="line">$&#123;color white&#125;NETWORK $&#123;hr 1&#125;$&#123;color&#125;</span><br><span class="line">Down $&#123;downspeed wlan0&#125;/s $&#123;alignr&#125;Up $&#123;upspeed wlan0&#125;/s</span><br><span class="line">$&#123;downspeedgraph wlan0 25,107&#125; $&#123;alignr&#125;$&#123;upspeedgraph wlan0 25,107&#125;</span><br><span class="line">Total $&#123;totaldown wlan0&#125; $&#123;alignr&#125;Total $&#123;totalup wlan0&#125;</span><br><span class="line"></span><br><span class="line">$&#123;color white&#125;DISKIO $&#123;hr 1&#125;$&#123;color&#125;</span><br><span class="line">Read $&#123;diskio_read&#125;/s $&#123;alignr&#125;Write $&#123;diskio_write&#125;/s</span><br><span class="line">$&#123;diskiograph_read /dev/sda 25,107&#125; $&#123;alignr&#125;$&#123;diskiograph_read /dev/sda 25,107&#125;</span><br><span class="line">]]</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 hui740024906@163.com </span>
     </div>
@@ -499,12 +494,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>archlinux安装桌面环境系统，好好玩耍</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">278</span></p>
+    <p><span class="copy-title">文章标题:</span>conky华丽桌面显示系统仪表盘</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">496</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="qianggetaba">qianggetaba</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-05, 11:33:53</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-08, 15:52:05</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/05/archlinux-desktop/" title="archlinux安装桌面环境系统，好好玩耍">https://qianggetaba.com/2019/08/05/archlinux-desktop/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-09, 11:54:15</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-09, 12:00:39</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/09/conky/" title="conky华丽桌面显示系统仪表盘">https://qianggetaba.com/2019/08/09/conky/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

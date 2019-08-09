@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>archlinux安装桌面环境系统，好好玩耍 | qianggetaba-blog</title>
-  <meta name="keywords" content=" 桌面环境 , gnome , gdm ">
-  <meta name="description" content="archlinux安装桌面环境系统，好好玩耍 | qianggetaba-blog">
+  <title>xorg-server的c语言入门 | qianggetaba-blog</title>
+  <meta name="keywords" content=" xorg , xorg-server ">
+  <meta name="description" content="xorg-server的c语言入门 | qianggetaba-blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在终端显示系统信息的 screenfetch neofetch">
 <meta name="keywords" content="screenfetch,neofetch">
@@ -410,9 +410,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-archlinux-desktop" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-xorg-server-newbie" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">archlinux安装桌面环境系统，好好玩耍</h1>
+        <h1 class="article-title">xorg-server的c语言入门</h1>
     
     <div class="article-meta">
         
@@ -420,30 +420,28 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="ArchLinux">ArchLinux</a>
+                <a href="javascript:" data-rel="xorg">xorg</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">桌面环境</a>
+            <a href="javascript:" class="color5">xorg</a>
             
-            <a href="javascript:" class="color1">gnome</a>
-            
-            <a href="javascript:" class="color4">gdm</a>
+            <a href="javascript:" class="color2">xorg-server</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-08 15:52:05'>2019-08-05 11:33</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-09 14:08:19'>2019-08-09 11:29</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:278</span>
+        <span>字数:509</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -477,15 +475,22 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在简单的从iso或者usb安装完成arch后，只有终端命令行，这样是简单方便，也可以安装桌面环境，不再是黑黑的命令</p>
-<p>以下是安装gnome桌面环境，等熟悉了，自己可以安装其他桌面环境尝鲜，gnome是主流桌面环境， gnome是Ubuntu默认的桌面环境，想来应该还是不错的，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pacman -Sy</span><br><span class="line"># wqy-microhei是chrome中文乱码</span><br><span class="line">pacman -S xorg xorg-server gnome ttf-droid wqy-microhei</span><br><span class="line"></span><br><span class="line"># 安装的包很多，需要耐心慢慢装</span><br><span class="line"></span><br><span class="line"># 添加非root用户，root也可以登录桌面，但是一般推荐不是root用户登录桌面</span><br><span class="line">useradd -m -g users -s /bin/bash qianggetaba</span><br><span class="line">passwd qianggetaba</span><br><span class="line">vi /etc/sudoers #root ALL=(ALL) ALL 下面加 qianggetaba ALL=(ALL) ALL  添加sudo执行命令权限</span><br><span class="line"></span><br><span class="line">systemctl enable sshd</span><br><span class="line">systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+        <p>xorg官网<a href="https://www.x.org/releases/X11R7.7/doc/libX11/libX11/libX11.html#Introduction_to_Xlib" target="_blank" rel="noopener">Xlib - C Language X Interface</a></p>
+<p>初级教程<a href="https://tronche.com/gui/x/xlib-tutorial/" target="_blank" rel="noopener">Xlib programming: a short tutorial</a></p>
+<p>linux的桌面图形架构图，使用client与server模式，server使用x11（X Window System protocol）协议，client通过x11协议告诉server怎么显示，显示什么，就像http协议，xlib是封装协议的c库，使用xlib可以方便与xserver建立连接，显示图像，不用关注协议具体的字节格式等等</p>
+<p><img src="xorg-server.png" alt="xorg-server"></p>
+<p>xlib是对x11显示服务协议的封装</p>
+<p>x11定义了客户端到服务器端的显示模式</p>
+<p>下面的小例子，演示怎么使用xlib库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">测试库文件，有桌面环境的应该都有</span><br><span class="line">sudo find / -name Xlib.h</span><br><span class="line">sudo find / -name libX11.so</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://wiki.archlinux.org/index.php/Xorg#Driver_installation" target="_blank" rel="noopener">Driver installation</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 显卡驱动选择</span><br><span class="line">lspci | grep -e VGA -e 3D       #查看显卡</span><br><span class="line">pacman -S xf86-video-intel      #intel video driver</span><br><span class="line">pacman -S xf86-video-amdgpu     #amd video driver</span><br><span class="line">pacman -S xf86-video-nouveau	# nvidia</span><br></pre></td></tr></table></figure>
+<p><a href="https://tronche.com/gui/x/xlib-tutorial/prog-2.cc" target="_blank" rel="noopener">prog-2.cc</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">// Written by Ch. Tronche (http://tronche.lri.fr:8000/)</span><br><span class="line">// Copyright by the author. This is unmaintained, no-warranty free software. </span><br><span class="line">// Please use freely. It is appreciated (but by no means mandatory) to</span><br><span class="line">// acknowledge the author&apos;s contribution. Thank you.</span><br><span class="line">// Started on Thu Jun 26 23:29:03 1997</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">// Xlib tutorial: 2nd program</span><br><span class="line">// Make a window appear on the screen and draw a line inside.</span><br><span class="line">// If you don&apos;t understand this program, go to</span><br><span class="line">// http://tronche.lri.fr:8000/gui/x/xlib-tutorial/2nd-program-anatomy.html</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#include &lt;X11/Xlib.h&gt; // Every Xlib program must include this</span><br><span class="line">#include &lt;assert.h&gt;   // I include this to test return values the lazy way</span><br><span class="line">#include &lt;unistd.h&gt;   // So we got the profile for 10 seconds</span><br><span class="line"></span><br><span class="line">#define NIL (0)       // A name for the void pointer</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">      // Open the display</span><br><span class="line"></span><br><span class="line">      Display *dpy = XOpenDisplay(NIL);</span><br><span class="line">      assert(dpy);</span><br><span class="line"></span><br><span class="line">      // Get some colors</span><br><span class="line"></span><br><span class="line">      int blackColor = BlackPixel(dpy, DefaultScreen(dpy));</span><br><span class="line">      int whiteColor = WhitePixel(dpy, DefaultScreen(dpy));</span><br><span class="line"></span><br><span class="line">      // Create the window</span><br><span class="line"></span><br><span class="line">      Window w = XCreateSimpleWindow(dpy, DefaultRootWindow(dpy), 0, 0, </span><br><span class="line">				     200, 100, 0, blackColor, blackColor);</span><br><span class="line"></span><br><span class="line">      // We want to get MapNotify events</span><br><span class="line"></span><br><span class="line">      XSelectInput(dpy, w, StructureNotifyMask);</span><br><span class="line"></span><br><span class="line">      // &quot;Map&quot; the window (that is, make it appear on the screen)</span><br><span class="line"></span><br><span class="line">      XMapWindow(dpy, w);</span><br><span class="line"></span><br><span class="line">      // Create a &quot;Graphics Context&quot;</span><br><span class="line"></span><br><span class="line">      GC gc = XCreateGC(dpy, w, 0, NIL);</span><br><span class="line"></span><br><span class="line">      // Tell the GC we draw using the white color</span><br><span class="line"></span><br><span class="line">      XSetForeground(dpy, gc, whiteColor);</span><br><span class="line"></span><br><span class="line">      // Wait for the MapNotify event</span><br><span class="line"></span><br><span class="line">      for(;;) &#123;</span><br><span class="line">	    XEvent e;</span><br><span class="line">	    XNextEvent(dpy, &amp;e);</span><br><span class="line">	    if (e.type == MapNotify)</span><br><span class="line">		  break;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      // Draw the line</span><br><span class="line">      </span><br><span class="line">      XDrawLine(dpy, w, gc, 10, 60, 180, 20);</span><br><span class="line"></span><br><span class="line">      // Send the &quot;DrawLine&quot; request to the server</span><br><span class="line"></span><br><span class="line">      XFlush(dpy);</span><br><span class="line"></span><br><span class="line">      // Wait for 10 seconds</span><br><span class="line"></span><br><span class="line">      sleep(10);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line"></span><br><span class="line"># 重启后还是进入命令行，是为了保险起见，因为不知道桌面环境是否能正常启动，执行下面命令，启动桌面</span><br><span class="line">systemctl start gdm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -L /usr/lib/ -lX11 -o xorg prog-2.cc</span><br><span class="line">./xorg</span><br></pre></td></tr></table></figure>
 
+<p>桌面出现一个小黑窗口，上面一条白线，10s后关闭，只关闭窗口程序没结束</p>
+<p>但是不能直接在启动桌面前的黑屏终端运行</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 hui740024906@163.com </span>
@@ -499,12 +504,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>archlinux安装桌面环境系统，好好玩耍</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">278</span></p>
+    <p><span class="copy-title">文章标题:</span>xorg-server的c语言入门</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">509</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="qianggetaba">qianggetaba</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-05, 11:33:53</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-08, 15:52:05</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/05/archlinux-desktop/" title="archlinux安装桌面环境系统，好好玩耍">https://qianggetaba.com/2019/08/05/archlinux-desktop/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-09, 11:29:40</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-09, 14:08:19</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/09/xorg-server-newbie/" title="xorg-server的c语言入门">https://qianggetaba.com/2019/08/09/xorg-server-newbie/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
