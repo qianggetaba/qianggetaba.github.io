@@ -1,5 +1,5 @@
 ---
-title: xorg-server-newbie
+title: xorg-server的c语言入门
 date: 2019-08-09 11:29:40
 tags:
  - xorg
