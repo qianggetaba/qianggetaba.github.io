@@ -2,6 +2,10 @@
 title: heredoc使用cat写入大段内容到文件,脚本生成配置文件
 date: 2019-08-13 16:06:46
 tags:
+ - linux命令
+ - cat
+categories:
+ - linux命令
 ---
 
 
