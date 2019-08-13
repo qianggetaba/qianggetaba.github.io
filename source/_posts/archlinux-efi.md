@@ -42,8 +42,8 @@ mkfs.ext4 /dev/sda2
 
 # mount order
 mount /dev/sda2 /mnt 
-mkdir -p /mnt/boot/EFI
-mount /dev/sda1 /mnt/boot/EFI
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
 
 sed -i '6iServer = http://mirrors.163.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist 
 
@@ -76,7 +76,7 @@ echo "root:ergdgfd!#" | chpasswd
 
 # os-prober for windows dual boot search
 pacman -S grub efibootmgr dosfstools os-prober mtools
-grub-install --target=x86_64-efi  --bootloader-id=ArchLinux --efi-directory=/boot/EFI --recheck
+grub-install --target=x86_64-efi  --efi-directory=/boot --bootloader-id=GRUB  --recheck
 os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
 
