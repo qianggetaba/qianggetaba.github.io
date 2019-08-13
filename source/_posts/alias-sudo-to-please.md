@@ -1,5 +1,5 @@
 ---
-title: alias-sudo-to-please
+title: 快速重新执行需要sudo的命令
 date: 2019-08-13 14:36:50
 tags:
  - linux命令
