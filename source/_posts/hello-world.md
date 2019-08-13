@@ -3,7 +3,7 @@ title: Hello World
 date: 2019-08-04 09:59:02
 ---
 
-Hello World is simple, but Make world is better.
+``Hello World`` is simple, but ``Make world`` is better.
 
 建站命令
 ```
@@ -39,6 +39,7 @@ hexo clean && hexo g && git checkout master && rm -rf 2019 archives categories c
 
 ```
 
-upload public to gitpage
+最后的命令是upload public to gitpage
+需要把gitpage的master分支public目录放到gitignore，不然，复制的public就没有更新到gitpage
 
 
