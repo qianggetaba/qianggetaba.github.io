@@ -12,7 +12,11 @@ categories:
 
 ```
 # 远程连接必须设置密码，root登录需要配置 /etc/ssh/sshd_config PermitRootLogin yes
+sed -i -e 's/#PermitRootLogin .*$/PermitRootLogin yes/' /etc/ssh/sshd_config
 # live的sshd已经配置好，直接连接
+
+```
+```
 passwd
 systemctl start sshd
 
