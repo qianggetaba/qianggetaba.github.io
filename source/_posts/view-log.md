@@ -5,11 +5,14 @@ tags:
  - tail
  - head
  - sed
+ - grep
 categories:
  - linux命令
 ---
 
 ```
+grep -E "a|b"  # 查找多个，or
+grep -E "a.*b" # 多个，and
 cat my.log |grep -n "error"  # 显示行号
 sed -n '425,435p' my.log  # 425-435行
 tail -n +425 my.log | head -n 11  #从425(含)行往下11行
