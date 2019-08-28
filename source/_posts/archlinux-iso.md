@@ -95,7 +95,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 exit
 
-reboot
+systemctl reboot
 ```
 
 重启后没有网
