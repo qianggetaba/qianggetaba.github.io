@@ -72,7 +72,7 @@ livecd ~ #
 设置root密码，开启ssh连接，你在虚拟机直接输后面的命令也行
 ```
 passwd
-rc-service sshd start
+rc-service sshd start # 或者 /etc/init.d/sshd start
 ip -4 addr
 ```
 在外面终端连接
@@ -148,6 +148,9 @@ ebuild，应该是编译环境和软件
 # 会下载
 emerge-webrsync
 ```
+如果是虚拟机可以在此时，建立快照，方便测试不同profile
+
+
 选择profile
 ```
 eselect profile list
@@ -224,7 +227,7 @@ exit
 poweroff
 ```
 
-正常安装完，去掉virtual box连接的iso，不能可能出现 ``FATAL: INT18: BOOT FAILURE ``
+正常安装完，去掉virtual box连接的iso后再启动，否则可能出现 ``FATAL: INT18: BOOT FAILURE ``
 
 如果都安装都正常，开启虚拟机，看见grub选项，正常进入系统
 
