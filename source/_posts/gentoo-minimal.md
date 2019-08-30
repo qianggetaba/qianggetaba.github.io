@@ -29,6 +29,8 @@ gentoo是通过编译源码安装系统与软件的linux发行版，安装时间
 
     原因：安装软件后，软件可能需要修改配置，但是不是直接修改了，而是在同一目录生成一个._c00*这样类似的文件，emerge发现后，会提示你update。
 
+    一般都是这个配置文件：``/etc/portage/package.use/zz-autounmask`` 屏蔽安装包
+
     解决：运行 ``etc-update``,输入 ``-3``表示自动 merge 合并,然后会提示你是否覆盖，输入``y``。就是自动把新生成的配置._c00*文件 mv 到为要修改的配置文件
 
 - profile的选择，gentoo是从源码编译安装，安装时，需要选择系统的类型
@@ -162,8 +164,13 @@ eselect profile set default/linux/amd64/17.0
 ```
 @world，可以理解为Windows注册表一样的全局配置，根据你的profile去下载与配置
 ```
-# 会下载与编译安装
+# 会下载与编译安装，就相当于系统全局更新
 emerge --ask --verbose --update --deep --newuse @world
+
+emerge --depclean
+emerge --update --newuse --deep --with-bdeps=y @world
+
+USE="-policykit" # /etc/portage/make.conf , skip spidermonkey,equery d spidermonkey
 ```
 
 ```
@@ -196,14 +203,14 @@ genkernel all
 加入fstab
 ```
 nano /etc/fstab
-/dev/sda1           	/         	ext4      rw,relatime	0  1
+/dev/sda1               /               ext4            rw,relatime     0 1
 ```
 
 hostname会显示在登录系统后的，终端提示符
 ```
 echo 'hostname="mygentoo"' > /etc/conf.d/hostname
 
-nano /etc/hosts
+nano /etc/hosts , make sure first line
 127.0.0.1     mygentoo.homenetwork mygentoo localhost
 
 # root password
