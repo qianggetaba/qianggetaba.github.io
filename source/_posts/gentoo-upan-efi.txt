@@ -1,0 +1,80 @@
+
+gentoo rufus写入u盘，efi安装
+
+u盘文件在/mnt/cdrom
+
+cp /mnt/cdrom/stage3-amd64-20190828T214505Z.tar.xz /mnt/gentoo/
+cd /mnt/gentoo
+tar xpvf stage3-amd64-20190825T214502Z.tar.xz --xattrs-include='*.*' --numeric-owner
+
+cd ~
+
+
+
+mount /dev/sda2 /mnt/gentoo/boot/
+
+./genfstab -U /mnt/gentoo >> /mnt/gentoo/etc/fstab # open for check
+
+chroot /mnt/gentoo /bin/bash
+
+eselect profile set default/linux/amd64/17.0/desktop/gnome/systemd
+
+
+Gentoo Linux --->
+        Support for init systems, system and service managers --->
+                [*]Openrc 
+                [*] systemd
+# EFI stub kernel
+Processor type and features  --->
+    [*] EFI runtime service support 
+    [*]   EFI stub support
+Firmware Drivers  --->
+    EFI (Extensible Firmware Interface) Support  --->
+        <*> EFI Variable Support via sysfs
+# pci wifi card
+Networking  ---> 
+  Wireless  ---> 
+    <M> Improved wireless configuration API 
+    <M> Generic IEEE 802.11 Networking Stack (mac80211) 
+Device Drivers  ---> 
+  [*] Network device support  ---> 
+        Wireless LAN  ---> 
+          Atheros Wireless Cards ----> 
+            <M>   Atheros 802.11n wireless cards support 
+
+nano /etc/portage/make.conf
+GRUB_PLATFORMS="emu efi-32 efi-64 pc"
+
+
+# 一起安装比较好，容易重复编译
+emerge --ask --newuse --deep sys-boot/grub:2 # have efibootmgr
+emerge --ask --newuse sys-boot/os-prober
+emerge --ask net-wireless/wpa_supplicant
+emerge --ask net-misc/dhcpcd
+
+
+nano /etc/default/grub
+GRUB_CMDLINE_LINUX="rootfstype=ext4 real_init=/usr/lib/systemd/systemd"
+
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Gentoo
+os-prober # WARNING: Failed to connect to lvmetad. Falling back to device scanning, scan wrong partition
+grub-mkconfig -o /boot/grub/grub.cfg
+
+efibootmgr -v # check list
+
+
+# recompile kernel
+cd /usr/src/linux 
+make menuconfig 
+make && make modules_install 
+mount /boot 
+cp arch/x86_64/boot/bzImage /boot/bzImage-x.x.xx-gentoo  # backup
+reboot
+
+
+
+emerge log
+/var/log/portage/elog/summary.log # package error log, not all compile log
+
+install gonme, webkit-gtk makeopts dont too large even no oom in dmesg
+NINJAFLAGS="-j1" MAKEOPTS="-j1" emerge -av1 =webkit-gtk-2.16.1
