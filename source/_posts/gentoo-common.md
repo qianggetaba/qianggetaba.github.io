@@ -63,7 +63,7 @@ swapon -a
 
 硬盘只分一个区
 ```
-parted /dev/sdf --script -- mkpart primary 0 -1
+parted /dev/sda --script -- mkpart primary 4MB -1
 ```
 
 
