@@ -66,4 +66,9 @@ swapon -a
 parted /dev/sda --script -- mkpart primary 4MB -1
 ```
 
+每次修改了USE后，更新world, 因为有的包会有新的依赖或者需要重新编译
+```
+emerge --ask --verbose --update --deep --newuse @world
+```
+
 
