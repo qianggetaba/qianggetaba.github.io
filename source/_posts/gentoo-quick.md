@@ -1,16 +1,27 @@
 ---
-title: gentoo-quick
+title: 快速安装最小gentoo系统
 date: 2019-09-02 17:56:43
 tags:
+ - gentoo-quick
+categories:
+ - gentoo
 ---
 
-boot minimal live cd
+[gentoo-Quick Installation](https://wiki.gentoo.org/wiki/Quick_Installation_Checklist)
 
-https://wiki.gentoo.org/wiki/Quick_Installation_Checklist
+在vmware上测试安装成功，下载 [install-amd64-minimal.iso](http://distfiles.gentoo.org/releases/amd64/autobuilds/20190901T214501Z/install-amd64-minimal-20190901T214501Z.iso) 和 [stage3-amd64.tar.xz](
+http://distfiles.gentoo.org/releases/amd64/autobuilds/20190901T214501Z/stage3-amd64-20190901T214501Z.tar.xz)
 
+boot minimal live cd，需要按【两次】回车
 
-ssh
-
+开启ssh, 连接ssh方便粘贴命令
+```
+passwd
+rc-service sshd start
+ip -4 addr
+```
+准备分区
+```
 wipefs -a /dev/sda
 parted /dev/sda --script mklabel msdos 
 parted /dev/sda --script -- mkpart primary 4MB -1
@@ -19,13 +30,19 @@ lsblk
 mkfs.ext4 /dev/sda1
 
 mount /dev/sda1 /mnt/gentoo
-
-scp stage3 to /mnt/gentoo
+```
+展开stage3
+```
 cd /mnt/gentoo
+# scp stage3 to /mnt/gentoo 或者 wget
 tar xvf stage3-amd64-20190901T214501Z.tar.xz
-
+```
+dns
+```
 cp /etc/resolv.conf etc
-
+```
+配置准备,chroot
+```
 mount -t proc none proc
 mount --rbind /sys sys
 mount --make-rslave sys
@@ -34,55 +51,36 @@ mount --make-rslave dev
 
 chroot . /bin/bash
 source /etc/profile
-
-nano /etc/portage/make.conf
+```
+下载安装ebuild与portage
+```
+emerge-webrsync
+```
+编译配置 与 其他配置
+```
+nano /etc/portage/make.conf # 修改第一行，其他行添加
 COMMON_FLAGS="-O2 -march=native -pipe"
 MAKEOPTS="-j2"
 GENTOO_MIRRORS="https://mirrors.163.com/gentoo/"
-
-# download portage
-emerge-webrsync  # /mnt/gentoo/var/tmp/portage/webrsync-iXsqVl/portage-20190901.tar.xz
-
-http://distfiles.gentoo.org/releases/amd64/autobuilds/20190901T214501Z/install-amd64-minimal-20190901T214501Z.iso
-http://distfiles.gentoo.org/releases/amd64/autobuilds/20190901T214501Z/stage3-amd64-20190901T214501Z.tar.xz
-http://distfiles.gentoo.org/snapshots/portage-20190901.tar.xz
-
-emerge-webrsync 会下载portage-20190901.tar.xz解压到/var/db/repos/gentoo/下，里面是可以安装的包的信息，相当于包管理器的db
-
-https://github.com/gentoo/portage/releases
-# manual install portage<<<EOF
-wget https://github.com/gentoo/portage/archive/v2.2.22.tar.gz -O portage-2.2.22.tar.gz
-tar --extract --gz --verbose --file portage-2.2.22.tar.gz
-cd portage-2.2.22
-
-
-
-echo "portage:x:250:250:portage:/var/tmp/portage:/bin/false" >> /etc/passwd
-echo "portage::250:portage" >> /etc/group
-mkdir /var/db/repos/gentoo
-
-python setup.py install
-
-<<<EOF
+CHOST="x86_64-pc-linux-gnu"
 
 passwd
 
-useradd -g users -G wheel,portage,audio,video,usb,cdrom -m qgta
-passwd qgta
+useradd -g users -G wheel,portage,audio,video,usb,cdrom -m qianggetaba
+passwd qianggetaba
 
-nano /etc/fstab
+nano /etc/fstab # 添加下面
 /dev/sda1		/		ext4		noatime		0 1
-
-nano /etc/portage/make.conf
-CHOST="x86_64-pc-linux-gnu"
 
 echo 'LANG="en_US.utf8"
 LC_COLLATE="C"' > /etc/env.d/02locale
 
-nano /etc/conf.d/hostname
+nano /etc/conf.d/hostname # 安装后电脑名，终端前缀符会显示
 
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
+```
+内核
+```
 emerge -av sys-kernel/gentoo-sources sys-kernel/linux-firmware
 
 cd /usr/src/linux
@@ -91,56 +89,30 @@ make -j2
 
 make modules_install
 make install
-
+```
+grub
+```
 emerge --ask sys-boot/grub
 grub-install --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg # 输出：Found vmlinuz-3.14.4-gento
+```
+其他软件
+```
+# 网络管理，尤其dhcpcd
+emerge --ask sys-apps/iproute2 net-misc/dhcpcd net-wireless/wireless-tools net-wireless/iw net-wireless/wpa_supplicant
 
+# equery 等等包管理工具
+emerge --ask app-portage/gentoolkit
+```
+
+安装完事
+```
 exit
 cd ~
 umount -R /mnt/gentoo
 
 reboot
+```
 
-ip route show # ip r, route
+重启等待进入新系统，试试能 ping联网就行，其他可以慢慢来，再试试上面的sshd能不能启动,可能需要启动``dhcpcd``
 
-ifconfig eno16777736 up
-ifconfig eno16777736 192.168.245.128 netmask 255.255.255.0 broadcast 192.168.245.255 up
-
-route add default gw 192.168.1.1
-
-emerge --ask net-misc/dhcpcd
-
-# minimal gnome
-# before add USE to /etc/portage/make.conf and  /etc/portage/package.use
-emerge -UD --autounmask n @world # may need install some package
-
-USE="gtk"
-emerge --ask app-crypt/gcr
-
-
-# make.conf
-USE="-qt5 -kde X gtk gnome systemd"
-
-emerge --ask gnome-base/gnome-light
-env-update && source /etc/profile
-getent group plugdev # output:plugdev:x:104:
-
-gpasswd -a username plugdev
-
-systemctl start gdm
-
-
-
-app-portage/gentoolkit # equery
-
-# package.use, nano /etc/portage/package.use/mesa
-media-libs/mesa -llvm   # llvm for Enable LLVM backend for Gallium3D, but llvm compile so slow and easy oom
-emerge --update --deep --newuse -av @world 
-emerge --depclean
-
-nano /etc/portage/make.conf
-VIDEO_CARDS="vmware"
-
-# after change USE
-emerge --ask --verbose --update --deep --newuse @world

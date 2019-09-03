@@ -71,4 +71,50 @@ parted /dev/sda --script -- mkpart primary 4MB -1
 emerge --ask --verbose --update --deep --newuse @world
 ```
 
+emerge-webrsync 说明
+```
+下载地址
+http://distfiles.gentoo.org/snapshots/portage-20190901.tar.xz
 
+portage-20190901.tar.xz里面是可以安装的包的信息，相当于包管理器的db
+
+portage下载路径，目录后缀随机
+/mnt/gentoo/var/tmp/portage/webrsync-iXsqVl/portage-20190901.tar.xz
+
+/var/db/repos/gentoo/ 是portage解压路径，可以看看包内文件目录是一致的
+
+看看有什么选项
+emerge-webrsync -h
+
+保留下载的portage包到/etc/portage/make.conf的DISTDIR目录/var/cache/distfiles，也是emerge时，下载的源码包路径
+emerge-webrsync -k
+```
+
+查看所有网卡
+```
+如果这样都没有就是驱动问题，可能需要重新配置编译内核
+ifconfig -a
+```
+
+安装systemd与[gnome](https://wiki.gentoo.org/wiki/GNOME/Guide),[VIDEO_CARDS和INPUT_DEVICES](https://wiki.gentoo.org/wiki/Xorg/Guide#make.conf)
+```
+nano /etc/portage/make.conf
+USE="-qt5 -kde X gtk gnome systemd"
+# synaptics for touchpad
+INPUT_DEVICES="libinput keyboard mouse synaptics"
+VIDEO_CARDS="vmware"
+
+# llvm for Enable LLVM backend for Gallium3D, but llvm compile so slow and easy oom
+/etc/portage/package.use 或者/etc/portage/package.use下的这个文件 添加一行
+media-libs/mesa -llvm
+
+# 包很多，根据配置大约有350-380个包，很慢
+emerge --ask gnome-base/gnome
+
+env-update && source /etc/profile
+getent group plugdev # 输出：plugdev:x:104:
+
+gpasswd -a <username> plugdev
+
+systemctl start gdm
+```
