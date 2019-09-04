@@ -11,7 +11,7 @@ live cd 的chroot后，emerge 会下载源码并编译安装，下载路径
 # 查找压缩包路径
 find /mnt/gentoo \( -name "*.tar.bz2" -o -name "*.tar.xz" -o -name "*.tar.gz" \)
 
-ls /mnt/gentoo/var/cache/distfiles/ # emerge fetch
+ls /mnt/gentoo/var/cache/distfiles/ # emerge fetch download path
 
 # 查看目录大小
 du -sh /mnt/gentoo/var/cache/distfiles/
@@ -97,6 +97,7 @@ ifconfig -a
 ```
 
 安装systemd与[gnome](https://wiki.gentoo.org/wiki/GNOME/Guide),[VIDEO_CARDS和INPUT_DEVICES](https://wiki.gentoo.org/wiki/Xorg/Guide#make.conf)
+先[Xorg](https://wiki.gentoo.org/wiki/Xorg/Guide)
 ```
 nano /etc/portage/make.conf
 USE="-qt5 -kde X gtk gnome systemd"
@@ -108,6 +109,11 @@ VIDEO_CARDS="vmware"
 /etc/portage/package.use 或者/etc/portage/package.use下的这个文件 添加一行
 media-libs/mesa -llvm
 
+# xorg
+emerge --pretend --verbose x11-base/xorg-drivers  #下载包与设置的VIDEO_CARDS无关，编译安装会使用
+emerge --ask x11-base/xorg-server
+env-update && source /etc/profile
+
 # 包很多，根据配置大约有350-380个包，很慢
 emerge --ask gnome-base/gnome
 
@@ -117,4 +123,10 @@ getent group plugdev # 输出：plugdev:x:104:
 gpasswd -a <username> plugdev
 
 systemctl start gdm
+```
+
+安装包时候会自动加入一些USE，设置功能，可以这样查看系统所有USE
+```
+emerge --info | grep ^USE
+emerge --ask --autounmask-write package  # 自动合并包配置，USE等等
 ```
