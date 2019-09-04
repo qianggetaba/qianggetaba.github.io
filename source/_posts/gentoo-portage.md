@@ -16,3 +16,14 @@ gentoo安装时的 ``emerge-webrsync`` 命令就是去 ``http://distfiles.gentoo
 ``emerge-webrsync`` 与 ``emerge --sync`` 功能一样，webrsync是下载压缩包后解压，sync是直接使用http来rsync文件，比较慢
 
 所以可以手动安装``emerge-webrsync``
+
+```
+# scp portage-20190901.tar.xz /mnt/gentoo
+wget http://distfiles.gentoo.org/snapshots/portage-20190901.tar.xz
+
+tar xf portage-20190901.tar.xz
+rm -rf /var/db/repos/gentoo
+mv portage /var/db/repos/gentoo
+```
+
+然后就可以配置与安装其他软件了
