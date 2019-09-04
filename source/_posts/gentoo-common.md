@@ -110,7 +110,7 @@ VIDEO_CARDS="vmware"
 media-libs/mesa -llvm
 
 # xorg
-emerge --pretend --verbose x11-base/xorg-drivers  #下载包与设置的VIDEO_CARDS无关，编译安装会使用
+emerge --pretend --verbose x11-base/xorg-drivers  #显示要安装的包，与所有VIDEO_CARDS INPUT_DEVICES 变量，以便按需设置
 emerge --ask x11-base/xorg-server
 env-update && source /etc/profile
 
