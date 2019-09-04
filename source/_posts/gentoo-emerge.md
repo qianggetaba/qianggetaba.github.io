@@ -29,10 +29,10 @@ categories:
 ``--with-bdeps`` 安装包时，默认启用，就是emerge的calculations时，把编译时依赖的包也安装上
 
 
-
-
 ``--depclean`` 后面跟包名就是卸载，没有就是删除系统内没有依赖，不用的包，如果有依赖没有解决，不做任何操作
 
 ``--autounmask-write`` 自动``unmask packages``, 自动更新USE，package.use
 
 ``--keep-going`` 出错后，尽可能执行其他，比如下载，编译其他的包
+
+``emerge -pe @world`` 显示所有包，-p是显示，-e是empty tree，就是整个依赖树
