@@ -56,7 +56,7 @@ dd if=/dev/zero of=/swapfile count=8M
 mkswap /swapfile
 
 nano /etc/fstab 
-/swapfile   none    swap    sw,loop 0 0
+/swapfile	        none	        swap	        sw,loop	        0 0
 
 swapon -a
 ```
@@ -129,4 +129,12 @@ systemctl start gdm
 ```
 emerge --info | grep ^USE
 emerge --ask --autounmask-write package  # 自动合并包配置，USE等等
+```
+
+安装具体包
+```
+ls var/db/repos/gentoo/dev-java/oracle-jdk-bin/
+oracle-jdk-bin-1.8.0.202.ebuild  oracle-jdk-bin-11.0.2.ebuild
+
+emerge -av =oracle-jdk-bin-1.8.0.202
 ```
