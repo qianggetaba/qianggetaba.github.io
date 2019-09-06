@@ -151,7 +151,7 @@ emerge --ask sys-kernel/linux-firmware
 ```
 内核编译
 ```
-# nano /etc/genkernel.conf , MAKEOPTS="j2"
+# nano /etc/genkernel.conf , MAKEOPTS="j2" UDEV="yes"
 genkernel --menuconfig all
 
 # 在内核编译菜单最下面选中systemd与openrc, 按空格，显示星号，选择，然后save，exit，exit，保存退出后会自动开始编译
@@ -189,7 +189,7 @@ emerge --ask sys-boot/grub:2
 安装grub引导
 ```
 nano /etc/default/grub
-GRUB_CMDLINE_LINUX="rootfstype=ext4 real_init=/usr/lib/systemd/systemd"  # 添加
+GRUB_CMDLINE_LINUX="rootfstype=ext4 init=/lib/systemd/systemd"  # 添加
 
 grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -234,7 +234,7 @@ emerge --ask --depclean --verbose x11-terms/xterm x11-wm/twm
 ```
 安装gnome，包很多，慢慢等待编译完成
 ```
-emerge --ask gnome
+emerge --ask gnome-base/gnome
 
 # 启动gnome桌面
 systemctl start gdm
