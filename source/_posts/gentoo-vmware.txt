@@ -68,6 +68,9 @@ locale-gen
 
 nano /etc/conf.d/hostname
 
+nano /etc/hosts
+127.0.0.1     mygentoo.homenetwork mygentoo localhost
+
 dd if=/dev/zero of=/swapfile count=8M
 mkswap /swapfile
 swapon /swapfile # swapon -a will load in fstab
@@ -87,9 +90,41 @@ emerge --depclean
 
 emerge --ask --verbose --autounmask-write sys-kernel/gentoo-sources sys-kernel/genkernel-next sys-kernel/linux-firmware sys-boot/grub net-misc/dhcpcd app-portage/gentoolkit
 emerge --ask --verbose --autounmask-write x11-base/xorg-server
-emerge --ask --verbose --autounmask-write gnome-base/gnome
+emerge --ask --verbose --autounmask-write gnome-base/gnome-light
+
+emerge --update --newuse --deep --with-bdeps=y @world
+emerge --depclean
+
+nano /etc/genkernel.conf
+MAKEOPTS="j2" UDEV="yes"
+
+genkernel --menuconfig all
+Gentoo Linux --->
+        Support for init systems, system and service managers --->
+                [*] systemd
+Processor type and features  --->
+    [*] EFI runtime service support 
+    [*]   EFI stub support
+Firmware Drivers  --->
+    EFI (Extensible Firmware Interface) Support  --->
+        <*> EFI Variable Support via sysfs
+
+nano /etc/default/grub
+GRUB_CMDLINE_LINUX="rootfstype=ext4 init=/lib/systemd/systemd"
+grub-install --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+exit
+cd ~
+umount -R /mnt/gentoo
+reboot
 
 
+after reboot
+root login
+systemctl start gdm
+in gnome desktop, systemctl start NetwokManager,install sudo, lbzip2
 
-tar -cvpzf backup.tar.gz --exclude=/backup.tar.gz --one-file-system /  # system full backup
+tar -c --use-compress-program=lbzip2 -f backup.tar.gz --exclude=/backup.tar.gz --one-file-system /  # system full backup
 tar -xf etc-backup.tar.bz2 -C /
+

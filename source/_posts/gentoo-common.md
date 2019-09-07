@@ -138,3 +138,19 @@ oracle-jdk-bin-1.8.0.202.ebuild  oracle-jdk-bin-11.0.2.ebuild
 
 emerge -av =oracle-jdk-bin-1.8.0.202
 ```
+
+列出，将要安装的包，包括要按照的依赖包
+```
+emerge --ask --verbose --deep --with-bdeps=y --pretend gnome
+```
+
+依赖于webkit-gtk的包
+```
+equery depends webkit-gtk
+```
+
+gnome依赖的包
+```
+equery depgraph --depth=2 gnome
+```
+
