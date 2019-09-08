@@ -62,6 +62,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 efibootmgr -v # check list
 
+add /etc/fstab
+/dev/sda2   /boot   vfat    defaults    0 2
 
 # recompile kernel
 cd /usr/src/linux 
