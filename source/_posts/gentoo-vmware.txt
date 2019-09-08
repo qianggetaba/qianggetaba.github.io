@@ -133,4 +133,4 @@ emerge --ask lbzip2
 EXTRA_ECONF="--with-bzip2=lbzip2" emerge -avD tar
 tar --help | grep -- --bzip2 |grep lbzip2
 
-tar -cvjf /backup.tar.bz2 --exclude=/backup.tar.bz2 --one-file-system /
+tar --ignore-failed-read -cvjf /backup.tar.bz2 --exclude=/backup.tar.bz2 --one-file-system /
