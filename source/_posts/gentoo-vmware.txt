@@ -125,6 +125,12 @@ root login
 systemctl start gdm
 in gnome desktop, systemctl start NetwokManager,install sudo, lbzip2
 
-tar -c --use-compress-program=lbzip2 -f backup.tar.gz --exclude=/backup.tar.gz --one-file-system /  # system full backup
+tar --use-compress-program=lbzip2 -cvf /backup.tar.bz2 --exclude=/backup.tar.bz2 --one-file-system /  # system full backup
 tar -xf etc-backup.tar.bz2 -C /
 
+
+emerge --ask lbzip2
+EXTRA_ECONF="--with-bzip2=lbzip2" emerge -avD tar
+tar --help | grep -- --bzip2 |grep lbzip2
+
+tar -cvjf /backup.tar.gz --exclude=/backup.tar.bz2 --one-file-system /

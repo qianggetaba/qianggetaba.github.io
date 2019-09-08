@@ -153,4 +153,14 @@ gnome依赖的包
 ```
 equery depgraph --depth=2 gnome
 ```
+添加config编译参数
+```
+EXTRA_ECONF="--with-bzip2=lbzip2" emerge -avD tar
+```
 
+一些清理命令
+```
+eclean distfiles
+eclean packages
+emerge --ask app-admin/eclean-kernel
+```
