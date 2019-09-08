@@ -164,3 +164,11 @@ eclean distfiles
 eclean packages
 emerge --ask app-admin/eclean-kernel
 ```
+
+
+emerge -av sudo # sudo command, edit /etc/sudoers
+emerge -av lbzip2 # paralel compress
+emerge -av google-chrome
+emerge -av wqy-microhei # chrome chinese font
+emerge -av conky
+
