@@ -5,7 +5,7 @@ tags:
  - tex
  - latex
 categories:
- - 软件
+ - latex
 ---
 
 使用latex排版软件，方便的生成格式化的文档，比word的各种编辑方便很多
