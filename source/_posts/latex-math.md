@@ -38,6 +38,12 @@ categories:
 ``bmatrix`` 就是 ``bracket`` 方括号
 ``pmatrix`` 就是 ``parenthesis`` 圆括号
 
+``\partial y`` 偏微分
+
+``\prod_{t\to n}`` 连乘积
+
+``\sum_{x=0}^{n}``  连加和
+
 ``\iint_{-N}^{N}\int_{-N}^{N}\frac{x}{R^3}dx=\frac{2}{(2n-1)(4ac-b^2)}[\frac{2ax+b}{r^{2n-1}}+4a(n-1)\int\frac{\left| \frac{a}{b} \right|}{6\sqrt[3]{x}R}]`` 只是演示，不是公式 ![数学tex](http://latex.codecogs.com/png.latex?\iint_{-N}^{N}\int_{-N}^{N}\frac{x}{R^3}dx=\frac{2}{(2n-1)(4ac-b^2)}[\frac{2ax+b}{r^{2n-1}}+4a(n-1)\int\frac{\left|%20\frac{a}{b}%20\right|}{6\sqrt[3]{x}R}])
 
 ``\iint`` 二重积分, ``_{-N}^{N}``积分上下限, ``\frac{x}{R^3}``分数，分子分母, ``^2``指数上标, ``^{2n-1}``指数含有多个, ``\left| ``,`` \right|``左右绝对值符号
