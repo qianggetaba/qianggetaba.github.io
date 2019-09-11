@@ -174,7 +174,7 @@ emerge -av conky
 
 emerge --pretend @system
 emerge --pretend @world
-emerge -uDN @world
+emerge -uDN @world # common command to update world
 
 /usr/sbin/emaint --check world  # check world file
 
