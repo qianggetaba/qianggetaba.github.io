@@ -196,3 +196,4 @@ portageq get_repos /
 sys-boot/os-prober
 dev-libs/libisoburn # grub-mkrescue, generating grub rescue iso
 
+/var/tmp/portage/net-libs/webkit-gtk-2.24.3/temp/build.log is compile webkit log

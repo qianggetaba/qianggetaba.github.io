@@ -95,7 +95,7 @@ emerge --depclean
 
 emerge --ask --verbose --autounmask-write sys-kernel/gentoo-sources sys-kernel/genkernel-next sys-kernel/linux-firmware sys-boot/grub net-misc/dhcpcd app-portage/gentoolkit  # 20:38--21:30
 emerge --ask --verbose --autounmask-write x11-base/xorg-server # 21:40--21:54
-emerge --ask --verbose --autounmask-write gnome-base/gnome-light
+emerge --ask --verbose --autounmask-write gnome-base/gnome-light # 10:17--  , compile webkit each job need 2g ram, but -j8 will fail
 
 emerge --update --newuse --deep --with-bdeps=y @world
 emerge --depclean
