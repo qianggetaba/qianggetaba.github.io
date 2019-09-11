@@ -16,6 +16,8 @@ categories:
 
 ![泰勒公式](cosx.png)
 
+![泰勒公式](tanx.gif)
+
 ![泰勒公式](arcsinx.png)
 
 ![泰勒公式](1+x.png)
