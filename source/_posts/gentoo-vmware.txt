@@ -1,4 +1,7 @@
 
+
+vmware hostonly network
+
 passwd
 rc-service sshd start
 ip -4 addr
@@ -8,7 +11,7 @@ parted /dev/sda --script mklabel msdos
 parted /dev/sda --script -- mkpart primary 4MB -1
 lsblk
 
-mkfs.ext4 /dev/sda1
+mkfs.ext4 -F /dev/sda1
 
 mount /dev/sda1 /mnt/gentoo
 
@@ -73,7 +76,9 @@ nano /etc/hosts
 
 dd if=/dev/zero of=/swapfile count=8M
 mkswap /swapfile
+chmod 0600 /swapfile
 swapon /swapfile # swapon -a will load in fstab
+free -h
 
 nano /etc/fstab
 /dev/sda1		/		ext4		noatime		0 1
@@ -84,12 +89,12 @@ ln -sf /proc/self/mounts /etc/mtab  # for systemd
 eselect profile list # see default with * at the end
 eselect profile set default/linux/amd64/17.1/desktop/gnome/systemd
 
-emerge --ask --verbose --update --deep --newuse @world
+emerge --ask --verbose --update --deep --newuse @world  # 271 pkgs, -j4,2g ram,4g swap,16:00--18:15
 emerge --update --newuse --deep --with-bdeps=y @world
 emerge --depclean
 
-emerge --ask --verbose --autounmask-write sys-kernel/gentoo-sources sys-kernel/genkernel-next sys-kernel/linux-firmware sys-boot/grub net-misc/dhcpcd app-portage/gentoolkit
-emerge --ask --verbose --autounmask-write x11-base/xorg-server
+emerge --ask --verbose --autounmask-write sys-kernel/gentoo-sources sys-kernel/genkernel-next sys-kernel/linux-firmware sys-boot/grub net-misc/dhcpcd app-portage/gentoolkit  # 20:38--21:30
+emerge --ask --verbose --autounmask-write x11-base/xorg-server # 21:40--21:54
 emerge --ask --verbose --autounmask-write gnome-base/gnome-light
 
 emerge --update --newuse --deep --with-bdeps=y @world
@@ -134,3 +139,4 @@ EXTRA_ECONF="--with-bzip2=lbzip2" emerge -avD tar
 tar --help | grep -- --bzip2 |grep lbzip2
 
 tar --ignore-failed-read -cvjf /backup.tar.bz2 --exclude=/backup.tar.bz2 --one-file-system /
+

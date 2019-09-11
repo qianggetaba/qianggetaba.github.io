@@ -172,3 +172,27 @@ emerge -av google-chrome
 emerge -av wqy-microhei # chrome chinese font
 emerge -av conky
 
+emerge --pretend @system
+emerge --pretend @world
+emerge -uDN @world
+
+/usr/sbin/emaint --check world  # check world file
+
+regenworld # add pkg to world file
+
+world file  /var/lib/portage/world empty
+
+eselect profile set default/linux/amd64/17.1/desktop/gnome/systemd # /etc/portage/make.profile/parent, parent profiles
+
+# query variables
+portageq envvar EROOT
+portageq envvar INPUT_DEVICES
+portageq config_protect
+portageq distdir
+portageq pkgdir
+portageq repos_config /
+portageq get_repos /
+
+sys-boot/os-prober
+dev-libs/libisoburn # grub-mkrescue, generating grub rescue iso
+
