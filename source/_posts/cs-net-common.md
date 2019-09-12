@@ -44,3 +44,7 @@ TCP协议（Transmission Control Protocol，传输控制协议）和UDP协议（
 常见协议工作层
 
 ![tcp/ip](protocol-common.png)
+
+tcp不能进行广播和多播，因为tcp是面向连接的
+
+计算机程序的端口是为了区分计算机上的程序，或者对面连接的计算机上的程序
