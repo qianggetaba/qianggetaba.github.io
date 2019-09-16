@@ -37,6 +37,20 @@ hexo g & hexo s
 # 使用dev分支保存git pages 源码，master为生成的git pages的静态html文件
 hexo clean && hexo g && git checkout master && rm -rf 2019 archives categories css img index.html js page tags && cp -r public/* . && git add . && git commit -m "update" && git push && git checkout dev
 
+# for windows
+hexo clean && hexo g && git checkout master
+rd /s /q 2019 archives categories css img js page tags
+del /f index.html
+move public\2019 .
+move public\archives .
+move public\categories .
+move public\css .
+move public\img .
+move public\js .
+move public\page .
+move public\tags .
+move public\index.html .
+git add . && git commit -m "update" && git push && git checkout dev
 ```
 
 最后的命令是upload public to gitpage
