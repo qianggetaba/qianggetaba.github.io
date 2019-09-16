@@ -56,6 +56,8 @@ categories:
 
 ``\lg x`` 10对数
 
+``\quad`` 空格
+
 ````
 
 ``\iint_{-N}^{N}\int_{-N}^{N}\frac{x}{R^3}dx=\frac{2}{(2n-1)(4ac-b^2)}[\frac{2ax+b}{r^{2n-1}}+4a(n-1)\int\frac{\left| \frac{a}{b} \right|}{6\sqrt[3]{x}R}]`` 只是演示，不是公式 ![数学tex](http://latex.codecogs.com/png.latex?\iint_{-N}^{N}\int_{-N}^{N}\frac{x}{R^3}dx=\frac{2}{(2n-1)(4ac-b^2)}[\frac{2ax+b}{r^{2n-1}}+4a(n-1)\int\frac{\left|%20\frac{a}{b}%20\right|}{6\sqrt[3]{x}R}])
