@@ -58,3 +58,11 @@ docker-compose --version
 ```
 
 ``sudo apt install netcat``  nc
+
+```
+apt Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+
+ps aux | grep -i apt
+systemctl stop apt-daily.service
+systemctl kill --kill-who=all apt-daily.service
+```
