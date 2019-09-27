@@ -3,7 +3,7 @@ title: docker的使用
 date: 2019-09-27 10:56:42
 tags:
 categories:
- - 软件
+ - docker
 ---
 
 安装后的测试 ``sudo docker run hello-world``
@@ -26,3 +26,5 @@ sudo usermod -aG docker your-user  # user docker without sudo, need relogin
 ``docker start``与``docker stop``
 
 ``docker exec -it myzk zkCli.sh`` 进入bash
+
+``docker rm f15b368502c8``
