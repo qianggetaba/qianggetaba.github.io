@@ -13,9 +13,8 @@ http://192.168.245.134:9200/
 docker run --name kibana5.6.11 -e ELASTICSEARCH_URL=http://192.168.245.134:9200 -p 5601:5601 -d kibana:5.6.11
 http://192.168.245.134:5601
 
-docker run --name logstash6.5.4 -p 5044:5044 -p 9600:9600 -d docker.elastic.co/logstash/logstash:6.5.4
+docker run --name logstash7.0.0 -p 5044:5044 -p 9600:9600 -d docker.elastic.co/logstash/logstash:7.0.0
+docker cp logstash7.0.0:/usr/share/logstash/config .
+docker rm -f logstash7.0.0
 
 ```
-
-``apt-cache show gnome-core | grep ^Depends`` 依赖的包
-``apt-cache --installed rdepends firefox-esr`` 依赖于这个包的包

@@ -28,3 +28,7 @@ sudo usermod -aG docker your-user  # user docker without sudo, need relogin
 ``docker exec -it myzk zkCli.sh`` 进入bash
 
 ``docker rm f15b368502c8``
+
+``docker rm -f logstash7.0.0``
+
+``docker network ls``

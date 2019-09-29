@@ -66,3 +66,6 @@ ps aux | grep -i apt
 systemctl stop apt-daily.service
 systemctl kill --kill-who=all apt-daily.service
 ```
+
+``apt-cache show gnome-core | grep ^Depends`` 依赖的包
+``apt-cache --installed rdepends firefox-esr`` 依赖于这个包的包
