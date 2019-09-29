@@ -32,3 +32,10 @@ sudo usermod -aG docker your-user  # user docker without sudo, need relogin
 ``docker rm -f logstash7.0.0``
 
 ``docker network ls``
+
+```
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
+
+``docker inspect bcfa49b0535f```
