@@ -13,8 +13,11 @@ http://192.168.245.134:9200/
 docker run --name kibana5.6.11 -e ELASTICSEARCH_URL=http://192.168.245.134:9200 -p 5601:5601 -d kibana:5.6.11
 http://192.168.245.134:5601
 
-docker run --name logstash7.0.0 -p 5044:5044 -p 9600:9600 -d docker.elastic.co/logstash/logstash:7.0.0
-docker cp logstash7.0.0:/usr/share/logstash/config .
-docker rm -f logstash7.0.0
+# es监控，先进入es容器，配置跨域
+docker exec -it 42d639a08934 /bin/bash
+echo "http.cors.enabled: true" >>/usr/share/elasticsearch/config/elasticsearch.yml
+echo "http.cors.allow-origin: \"*\"" >>/usr/share/elasticsearch/config/elasticsearch.yml
+docker restart 42d639a08934
 
+docker run --name es-head5 -p 9100:9100 -d docker.io/mobz/elasticsearch-head:5
 ```
