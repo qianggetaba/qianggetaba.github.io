@@ -71,3 +71,10 @@ systemctl kill --kill-who=all apt-daily.service
 
 ``apt-cache show gnome-core | grep ^Depends`` 依赖的包
 ``apt-cache --installed rdepends firefox-esr`` 依赖于这个包的包
+
+```
+sudo apt-get install software-properties-common # for add-apt-repository
+sudo add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main"
+sudo apt-get update
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
+```
