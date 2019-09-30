@@ -11,6 +11,8 @@ categories:
 
 [debian-live-10.1.0-amd64-gnome.iso.torrent](https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-10.1.0-amd64-gnome.iso.torrent)
 
+[debian-live-10.1.0-amd64-standard.iso.torrent](https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-10.1.0-amd64-standard.iso.torrent)没有桌面，826M
+
 graphical install
 
 ``systemctl get-default``

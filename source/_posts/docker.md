@@ -40,3 +40,4 @@ docker rm $(docker ps -a -q)
 
 ``docker inspect bcfa49b0535f``
 
+``docker search elasticsearch`` 搜索镜像
