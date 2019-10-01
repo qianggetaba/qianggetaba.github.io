@@ -160,6 +160,8 @@ hdfs dfsadmin -report  datanode报告
 test
 yarn jar hadoop-2.7.7/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.7.jar pi 4 10
 
+pi 100 5000000, Pi is 3.14159312800000000000
+
 
 datanode 日志
 ls hadoop-2.7.7/logs/
