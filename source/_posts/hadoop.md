@@ -4,39 +4,43 @@ date: 2019-09-30 15:43:19
 tags:
 ---
 
-vm install debian standard，ustc mirror
+vm install debian standard,grpghic need ram 1G，ustc mirror
 
+boot into vm,root login
 
 apt-get install openssh-server
 systemctl enable ssh --now
+ip -4 addr
 
 normal user login via ssh
 
 su -
 nano /etc/sudoers
 Defaults        env_keep = "http_proxy https_proxy ftp_proxy DISPLAY XAUTHORITY"
-li    ALL=(ALL:ALL) ALL
+li      ALL=(ALL:ALL) ALL
+exit
 
 export http_proxy=http://192.168.1.37:1080
 
 sudo apt-get upgrade
 
-sudo apt install default-jre
+sudo apt install default-jdk
 java -version
 
 wget http://us.mirrors.quenda.co/apache/hadoop/common/hadoop-2.7.7/hadoop-2.7.7.tar.gz
 tar xf hadoop-2.7.7.tar.gz
 
-/etc/profile
+sudo nano /etc/profile
 export JAVA_HOME=/usr/lib/jvm/default-java
 export CLASSPATH=.:$JAVA_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
 export HADOOP_HOME=/home/li/hadoop-2.7.7
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-re login
 
 nano hadoop-2.7.7/etc/hadoop/core-site.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>  
     <property>  
        <name>fs.default.name</name>  
@@ -46,6 +50,8 @@ nano hadoop-2.7.7/etc/hadoop/core-site.xml
 
 cp hadoop-2.7.7/etc/hadoop/mapred-site.xml.template hadoop-2.7.7/etc/hadoop/mapred-site.xml
 nano hadoop-2.7.7/etc/hadoop/mapred-site.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>  
     <property>  
        <name>mapreduce.framework.name</name>  
@@ -54,6 +60,8 @@ nano hadoop-2.7.7/etc/hadoop/mapred-site.xml
 </configuration>
 
 nano hadoop-2.7.7/etc/hadoop/hdfs-site.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
     <property>  
         <name>dfs.replication</name>  
@@ -82,7 +90,12 @@ nano hadoop-2.7.7/etc/hadoop/hdfs-site.xml
 </configuration>
 
 nano hadoop-2.7.7/etc/hadoop/yarn-site.xml
+<?xml version="1.0"?>
 <configuration>
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+    <value>cluster-master</value>
+    </property>
     <property>  
         <name>yarn.nodemanager.aux-services</name>  
         <value>mapreduce_shuffle</value>  
@@ -102,20 +115,26 @@ chmod 600 .ssh/authorized_keys
 
 ssh localhost
 
-关机快照，链接克隆3个，hadoop1,2,3
+sudo systemctl poweroff -i 关机快照，链接克隆3个，hadoop1,2,3
 
 启动三个克隆,normal login, ip -4 addr
 
-1,ssh 登录其他两个，正常
-2,3删除id_rsa，rm .ssh/id_rsa*，hosts,192.168.245.135 cluster-master
+ssh normal user login all
 
-1，sudo nano /etc/hosts
+sudo hostnamectl set-hostname cluster-master
+
+sudo nano /etc/hosts
 192.168.245.135 cluster-master
 192.168.245.137 cluster-slave1
 192.168.245.136 cluster-slave2
 
-ping test
-ssh test
+2,rm .ssh/id_rsa*
+
+master
+ssh cluster-master
+ssh cluster-slave1
+ssh cluster-slave2
+ssh 0.0.0.0
 
 nano hadoop-2.7.7/etc/hadoop/slaves
 cluster-slave1
@@ -136,10 +155,16 @@ http://192.168.245.135:8088   yarn
 hdfs fsck /
 hdfs dfs -ls /
 hdfs dfs -mkdir -p /user/zyh
+hdfs dfsadmin -report  datanode报告
 
 test
 yarn jar hadoop-2.7.7/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.7.jar pi 4 10
 
 
-datanode 日志，slave
-nano /home/li/hadoop-2.7.7/logs/hadoop-li-datanode-debian1.log
+datanode 日志
+ls hadoop-2.7.7/logs/
+rm hadoop-2.7.7/logs/*
+
+:8088/cluster 查看job进度，state一直为accepted是有问题的
+左边的cluster--applications--accepted可以看各个状态的任务
+比如finished，点击第一列的job id可以进去看日志

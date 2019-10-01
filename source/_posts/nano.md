@@ -18,3 +18,7 @@ ctrl +w ctrl +v 文件尾
 
 m+\ 文件开始
 m+/ 文件尾
+
+光标行首，ctrl+k 删除行
+
+m+\ m+a m+/ ctrl+k 删除全部
