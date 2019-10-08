@@ -73,3 +73,5 @@ python安装目录里有 ``2to3.py``转换代码2到3，可以复制到需要的
 ``py 2to3.py test.py`` 显示转换的行，不保存
 ``py 2to3.py -w test.py`` 源文件自动备份为.bak，保存转换结果
 
+
+``py -m pip install beautifulsoup4`` html解析库
