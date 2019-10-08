@@ -68,3 +68,8 @@ class,
 模块安装``py -m pip install psutil``
 
 windows系统模块，``pywin32``,``wmi``
+
+python安装目录里有 ``2to3.py``转换代码2到3，可以复制到需要的目录，注意第一行的``#!``(shebang line),可能会出现无输出等问题，删除试试
+``py 2to3.py test.py`` 显示转换的行，不保存
+``py 2to3.py -w test.py`` 源文件自动备份为.bak，保存转换结果
+
