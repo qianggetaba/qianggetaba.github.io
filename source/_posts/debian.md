@@ -78,3 +78,10 @@ sudo add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xe
 sudo apt-get update
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
 ```
+
+
+```
+sudo apt-get install open-vm-tools
+sudo systemctl reboot
+/usr/bin/vmware-toolbox-cmd -v
+```
