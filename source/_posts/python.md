@@ -12,6 +12,9 @@ categories:
 
 cmd， 试试``py``或者``python``，进入python交互式命令>>>,说明安装正常，``exit()`` 退出
 
+加入环境变量,确保有``python -V``与``pip -V``
+python.exe ``C:\Users\winuser\AppData\Local\Programs\Python\Python37``
+pip.exe ``C:\Users\winuser\AppData\Local\Programs\Python\Python37\Scripts``
 
 新建文件``test.py``，测试功能
 ```
