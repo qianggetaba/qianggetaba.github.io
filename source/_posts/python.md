@@ -78,3 +78,12 @@ python安装目录里有 ``2to3.py``转换代码2到3，可以复制到需要的
 
 
 ``py -m pip install beautifulsoup4`` html解析库
+
+
+windows python 2.7.17, 3.7.4共存，下载安装，2默认安装在C:\Python27，3需要自定义安装到C:\Python37
+安装完改名，python2.exe  python3.exe
+加入环境变量``C:\Python27``,``C:\Python27\Scripts``,3一样
+测试安装：``python2 -V``,``python3 -V``
+
+安装pip模块
+``python2 -m pip install module``
