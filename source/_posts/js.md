@@ -13,3 +13,5 @@ js web api, 比如常用的``document.getElementById()``，``fetch``, ``new Prom
 
 (Standard built-in objects)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects]
 
+js语法，let,const,var等等
+(Statements and declarations)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements]
