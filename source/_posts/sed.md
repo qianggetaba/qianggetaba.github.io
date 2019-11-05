@@ -13,3 +13,6 @@ categories:
 ``sed -e '5d' file``预览删除第5行的文件，控制台输出
 
 ``sed -i '5d' file``删除文件第5行
+
+``sed -i 's/^M$//' file`` dos2unix转换换行符
+``tr -d '\r' < input > output`` 转换换行符
