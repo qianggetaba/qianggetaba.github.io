@@ -67,6 +67,13 @@ apt Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporar
 ps aux | grep -i apt
 systemctl stop apt-daily.service
 systemctl kill --kill-who=all apt-daily.service
+
+sudo killall apt apt-get
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock*
+sudo dpkg --configure -a
+sudo apt update
 ```
 
 ``apt-cache show gnome-core | grep ^Depends`` 依赖的包
