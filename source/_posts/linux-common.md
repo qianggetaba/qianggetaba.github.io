@@ -19,3 +19,9 @@ sudo命令时，保留代理配置，在env_reset下面加一行
 Defaults        env_reset
 Defaults        env_keep = "http_proxy https_proxy ftp_proxy DISPLAY XAUTHORITY"
 ```
+
+
+```
+查找日志文件,显示文件大小,按从大到小排序
+find ~/ -name *.log.* | xargs du -sh | sort -r -h
+```
