@@ -170,3 +170,25 @@ rm hadoop-2.7.7/logs/*
 :8088/cluster 查看job进度，state一直为accepted是有问题的
 左边的cluster--applications--accepted可以看各个状态的任务
 比如finished，点击第一列的job id可以进去看日志
+
+
+
+单机开发环境
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+ssh localhost
+
+sudo apt-get install ssh rsync
+
+nano etc/hadoop/hadoop-env.sh
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_221
+
+# 测试运行
+mkdir input
+cp etc/hadoop/*.xml input
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.6.jar grep input output 'dfs[a-z.]+'
+cat output/*
+
+rm -rf output
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.7.jar wordcount input output
