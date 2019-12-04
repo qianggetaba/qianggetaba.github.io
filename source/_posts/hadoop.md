@@ -300,3 +300,12 @@ C:\Users\mjoys\proj\hadoopmy\target
 
 使用类全名，不然main ClassNotFoundException
 bin/hadoop jar jar/hadoopmy-1.0.jar ddddd.WordCount input output
+
+自定义排序
+自定义包装类 implements WritableComparable，里面有比较方法compareTo
+mapper读取行，写入以自定义对象为key的k-v,context.write(自定义对象,NullWritable.get());，hadoop会自动调用自定义保证类排序
+
+分区
+多个reduce，每个reduce生成一个结果文件
+自定义分区类 extends Partitioner里面getPartition()第三个参数为分区数量,返回结果只能为0,1,2,3等，表示分区号，因为源码里返回值计算 return (key.hashCode() & Integer.MAX_VALUE) % numReduceTasks;
+job.setNumReduceTasks(3) reduce数量即为分区数量
